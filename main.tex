@@ -1,4 +1,5 @@
 \documentclass[12pt,a4 paper,title page]{article}
+% \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 \usepackage[british]{datetime2} % For urldate formatting
@@ -37,19 +38,19 @@
 Recommender system, Heterogeneous Information Network, Knowledge Graph, Data Mining 
 
 \subsection*{Thesis statement 1}
-The Embedding based information mining from Heterogeneous Information Graph would both reduce recommendation system productionize complexity and enables model to be self-evolving over time
+The Embedding based feature mining in Heterogeneous Information Graph would both reduce recommendation system implementation complexity and enables model to be adaptive to new information over time
 
 \subsection*{Thesis statement 2}
-By learning semantic information of meta-path from Heterogeneous Network can help in developing a generic and self-evolving approach for implementing real-world recommender systems  
+By learning semantic information of Heterogeneous Information Network via its nodes and edgers can help in developing a generic embedding approach for implementing real-world recommender systems that is long lasting and easy on maintenance. 
 
 \subsection*{Aim 1}
 To explore the semantic information relationship within Heterogeneous Information Network for Recommendation problem.
 
 \subsection*{Aim 2}
-To understand the effectiveness and adaptability of Heterogeneous Information Network for changing data streams over time. 
+To understand the effectiveness and adaptability of Heterogeneous Information Network for constant data stream processing. 
 
 \subsection*{Aim 3}
-Try to develop a generic approach based Heterogeneous Information Network to make a long-lasting recommender system that is adaptive to feature changes and being temporal aware. 
+Try to develop a generic approach based Heterogeneous Information Network to make a long-lasting recommender system that is both adaptive to feature changes and being temporal aware. 
 
 \subsection*{Objective 1}
 To develop a formalized graph structure modelling methodology for rich feature data sets. 
@@ -59,12 +60,12 @@ To develop a formalized graph structure modelling methodology for rich feature d
 \subsection*{Objective 2} 
 To develop a comprehensive similarity method based on graph structure that can applied into recommender systems. 
 
-\textbf{Success condition:} Evaluate current state of art graph-based similarity measures to determine and develop a fitting similarity approach for Similarity Comparison between nodes and meta-path. 
+\textbf{Success condition:} Evaluate current graph-based similarity measures to determine and develop a fitting similarity approach for recommender system, which is, capable of solving Top-K recommendation and effective in Cold Start problems. 
 
 \subsection*{Objective 3}
 To develop a semi-supervised feature mining method to handle complex large heterogeneous information network. 
 
-\textbf{Success condition:} An embedding approach that is not only effective but also computational effective for mining large scale HIN. 
+\textbf{Success condition:} An embedding approach that is not only performant but also computational effective for mining large scale HIN. 
 
 \subsection*{Objective 4} 
 To develop a graph-based learning framework that adaptive to tempo information 
@@ -74,7 +75,7 @@ To develop a graph-based learning framework that adaptive to tempo information
 \subsection*{Objective 5} 
 To develop a recommendation system based on Heterogeneous Information Network 
 
-\textbf{Success condition:} A working recommender framework prototype using generic approach that is capable to  adapting to feature change while easy to productionize.  
+\textbf{Success condition:} A working recommender framework prototype using generic approach that is capable to  adapting to feature change and computational effective.  
 
 \newpage
 
@@ -145,7 +146,7 @@ Majority of the recommendation research are focused on static datasets. However,
 
 Following common datasets will be used for method verification: 
 
-such as MovieLens dataset (http://grouplens.org/datasets/movielens/) 
+MovieLens dataset (http://grouplens.org/datasets/movielens/) 
 
 Netflix dataset (http://www.lifecrunch.biz/archives/207) 
 
@@ -159,10 +160,20 @@ And case studies on real estate recommendation or tourism recommendation will be
 \subsection{Task 1: propose a graph structure modeling methodology for recommender system}
 It is challenging to develop effective methods for HIN based recommendation in both extraction and exploitation of the information from HINs.
 
-\subsubsection*{Step 1: develop a compreshensive definition of the graph structured data}
+\subsubsection*{Step 1: develop a generic graph structured data for recommendation problem}
 
-\subsubsection*{Step 2: develop a compreshensive definition of the graph structured data}
+Graph structure is being adopted in a wide range of applications. However, to our best of knowledge, none of them is taking a generic approach in forming the heterogeneous graph. such practice, normally causing graph only optimized for a specific problem, and less adaptable as information evolves over time. Based on the nature of recommender system, we propose to accommodate not only user-item interaction, item features, and user profile information into the same heterogeneous information network. we also propose to further explore the semantic information by normalizing features on both item feature and user profile information into more atomic feature nodes. 
 
+such practice would bring multiple benefits: 
+1. Reduce data sparsity. By breaking up item features into more generic feature nodes would help increase the density of the network, and increase possible connectivity (mate-path) between nodes, which had not connection before.
+2. With that, new in coming information would also transformed through the same decomposing process, hence making the graph structure adaptable to ever evolving changes.
+3. As the information graph cumulates auxiliary information in a holistic approach, suc structure also making problem context switch possible. 
+
+Of course, having a generic purpose HIN as training source introduce both complexity and noise. which we would discuss in Task 2 and Task 3.
+
+
+\subsubsection*{Step 2: to develop transformation rule for the graph structure}
+recommendation test data sets are normally saved in csv format, which is quite different from the graph data structure we proposed above. a structure will be developed to transform the flat user-item joined with item/user profile data sets into a holistic unified graph structure.
 
 
 \subsection{Task 2: develop a comprehensive graph similarity measure}
@@ -171,7 +182,7 @@ Similarity measure is to evaluate the similarity of objects. It is the basis of 
 
 Different from similarity measure on homogeneous networks, similarity measure on HIN not only considers structure similarity of two objects but also takes the meta path connecting these two objects into account. Sun et al.first propose PathSim that measure the semantics in meta paths constituted by different-typed objects. While HeteSim (Shi et al.) is proposed evaluate the relevance of any object pair under arbitrary meta path.
 
-For recommendation problem: ...
+For recommendation problem
 
 
 \subsection{Task 3: use embedding approach of large scale Information Network}
@@ -181,18 +192,36 @@ In recommendation settings, if we consider the graph structured HIN as a generic
 Effective graph analytics provides users a deeper understanding of what is behind the data, and thus can benefit a lot of useful applications. However, most graph analytics methods suffer the high computation and space cost. Graph embedding is an effective yet efficient way to solve the graph analytics problem. It converts the graph data into a low dimensional space in which the graph structural information and graph properties are maximumly preserved.
 
 Apart of overcoming computation constrains, embedding also play a important role of distilling relevant information, reducing noises for accordingly recommendation problem.
-to learn effective heterogeneous network representations for summarizing important structural characteristics and properties of HINs. Following [13], [14], we characterize nodes from HINs with low-dimensional vectors, i.e., embeddings. Instead of relying on explicit path connection, we would like to encode useful information from HINs with latent vectors. Compared with meta-path based similarity, the learned embeddings are in a more compact form that is easy to use and integrate. Also, the network embedding approach itself is more resistant to sparse and noisy data. However, we propose a new heterogeneous network embedding method. Considering heterogeneous characteristics and rich semantics reflected by meta-paths, the proposed method first uses a random walk strategy guided by meta-paths to generate node sequences. For each meta-path, we learn a unique embedding representation for a node by maximizing its co-occurrence probability with neighboring nodes in the sequences sampled according to the given meta-path. We fuse the multiple embeddings w.r.t. different meta-paths as the output of HIN embedding.
+to learn effective heterogeneous network representations for summarizing important structural characteristics and properties of HINs. Following [13], [14], we characterize nodes from HINs with low-dimensional vectors, i.e., embeddings. Instead of relying on explicit path connection, we would like to encode useful information from HINs with latent vectors. Compared with meta-path based similarity, the learned embeddings are in a more compact form that is easy to use and integrate. Also, the network embedding approach itself is more resistant to sparse and noisy data. 
+
+"we propose a new heterogeneous network embedding method. Considering heterogeneous characteristics and rich semantics reflected by meta-paths, the proposed method first uses a random walk strategy guided by meta-paths to generate node sequences. For each meta-path, we learn a unique embedding representation for a node by maximizing its co-occurrence probability with neighboring nodes in the sequences sampled according to the given meta-path. We fuse the multiple embeddings w.r.t. different meta-paths as the output of HIN embedding."
+
+"we propose and explore three fusion functions to integrate multiple embeddings of a node into a single representation for recommendation, including simple linear fusion, personalized linear fusion and non-linear fusion. These fu- sion functions provide flexible ways to transform HIN embeddings into useful information for recommendation."
 
 
+\subsection{Task 4: extend Heterogeneous Information Network to accommodate temporary information through time}
 
+Spatial Temporal GCN (ST-GCN) [72] adopts a different approach by extending the temporal flow as graph edges so
+approach by extending the temporal flow as graph edges so that spatial and temporal information can be extracted using
+that spatial and temporal information can be extracted using a unified GCN model at the same time. ST-GCN defines
+a unified GCN model at the same time. 
 
-\subsection{Task 5: extend Heterogeneous Information Network to accommodate temporary information through time}
- 
+based on the embedding methodology mentioned in Task 3, adjacency matrix can be represented as a summation of K adjacency matrices. Then Graph Convolution is used applying different weights to the neighboring edges.
 
-\subsection{Task 6: develop recommendation framework based Heterogeneous Information Network}
+% ?
+% −1
+% −1
+% fout = Λj AjΛj
+% 2
+% 2
+% finWj (37)
+% j
+
+(suevey page 15 reference 14)
+
+\subsection{Task 5: develop recommendation framework based Heterogeneous Information Network}
 
 Due to the flexibility in modelling data heterogeneity, HIN based recommendation adopts the model complex characterize and heterogeneous auxiliary data for recommender systems.
-
 
 \subsubsection*{Step 1: HIN based recommendation on static data sets}
 There are mainly 2 approaches in static data settings for performing recommendation tasks via HIN. 
@@ -210,8 +239,7 @@ The First is to expand the spatial definition of a convolution (Niepert et al., 
 Song et al. (2019) propose a dynamic-graph-attention neural network based recommender system for online communities.
 
 
-
-\subsection{Task 7:  A case study for validating the proposed recommendation approaches}
+\subsection{Task 6:  A case study for validating the proposed recommendation approaches}
 
 The research will be verified from two aspects: 
 
