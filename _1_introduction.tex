@@ -1,19 +1,27 @@
+\section*{Abstracts}
+
+\subsection*{Keywords} 
+
+Recommender system, Heterogeneous Information Network, Knowledge Graph, Transfer Learning, Feature Representation Learning
+
+
 \section{Introduction and background}
-Recommender System (RS) is an indispensable technology in this big data era. It evolves around our everyday life on multiple fronts. From daily curated news feed, to online shopping portal, to music playlist that we listen, and movies we watch. RS help us to find personalized interests from the ever-increasing information overloads \citep{Lu2015}. It is also acting as a decision-making assisting agent, that makes peoples life more efficient and focused. 
+Recommender System (RS) is an indispensable technology in this big data era. It evolves around our everyday life on multiple fronts. 
+From daily curated news feed, to online shopping portals, to music and movies we play. RS help us to find personalized interests from the ever-increasing information overloads \citep{Lu2015}. 
+For complex problems, RS is capable of taking account of multiple factors to simplify decision making efforts, acting as a decision-making assisting agent, such as b2b recommendation \citep{shambour2012trust} and medical decision assisting \citep{zhang2017idoctor}.
 
-\subsection{Research landscape}
-
-2006, 100 million datasets were released by Netflix \citep{Bennett2007} The action expedited the research on Collaborative Filtering. Over decades, Collaborative Filtering is still at the forefront of Recommender systems Field. Many new approaches and extensions had been developed in collaboration with Collaborative Filtering to tackle its cold start and data sparsity problems. \citet{barkan2016item2vec} introduced item2vec for Collaborative Filtering also showed how different forms of recommendations can be used within Collaborative Filtering domain. 
+% \subsection{Research landscape}
+recommendation Systems exists long before computer was invented. Catalogs can be considered a one of the most primitive Content Based recommendation systems. In 2006, 100 million datasets were released by Netflix \citep{Bennett2007} The action expedited the research on Collaborative Filtering. Over decades, Matrix Factorization based approach is still at the forefront of Recommender systems Field. Many new approaches and extensions had been evolved based on Collaborative Filtering to tackle its computation challenges and data sparsity problems. 
 
 On the deep-learning camp, recommender system is also striving by utilizing the learning ability of Neural Network. \citet{Cheng2016} proposed `Wide and deep learning for recommendation system` to achieve both memorization and generalization in recommendation for Google Play. \citet{Covington2016} demonstrated how deep neural network is implemented in YouTube, which helped billions of users discover their personalized content. \citet{Karatzoglou2013} proposed use Reinforcement Learning techniques personalized ranking based on users’ interests.  
 
-Transfer Learning \citep{Pan2010} in Cross Domain recommender system is another promising area which make recommendation possible in when initial user interaction data is scarce in target domains. \citet{Elkahky2015} experimented this approach on multiple Microsoft products, and concluded multi domain recommendation system significantly outperforms single domain recommendation systems. 
+Transfer Learning \citep{Pan2010} in Cross Domain recommender system is another promising area which allowing recommendation possible in when initial user interaction data is scarce in target domains. \citet{Elkahky2015} experimented this approach on multiple Microsoft products, and concluded multi domain recommendation system significantly outperforms single domain recommendation systems. 
 
-\subsection{Industry Challenge}
+% \subsection{Real world Challenge}
 
-However, a good working recommendation system is not just about recommendation algorithm, it is a systematic approach. Being overwhelmingly popular, Collaborative Filtering success is not only due to its effectiveness, but also thanks to its simplicity in data engineering requirement and domain knowledge dependency \citep{Amatriain2016}. CF is one of the most accessible recommendation approaches for a lot of recommendation solutions, despite of having known issue with data sparsity and cold start problems.
+Building recommendation system requires systematic approach. Being overwhelmingly popular, Collaborative Filtering success is not only due to its effectiveness, but also thanks to its simplicity and low barrier of entry \citep{Amatriain2016}, despite of having known issue with data sparsity and cold start problems.
 
-Based on observation, the challenges of setting up a successful real-world recommender system mainly comes down to 3 parts:  
+Based on research observation, the challenges of setting up a successful real-world recommender system mainly comes down to 3 parts:  
 
 \begin{itemize}
 \item Algorithm. Setting up an effective recommendation system is different for every business and every problem. A algorithm in recommender system is very hard to kept generic. Thus, transferability and reusability is low.
@@ -21,16 +29,10 @@ Based on observation, the challenges of setting up a successful real-world recom
 \item Data Adaptation. In the real-world scenario, information in flow as data streams. Features changes as time go by, along with recommendation objective. We often see diminishing performance from a developed recommender system over time. The ability to adapt data dynamics and making use of Temporal Information remain challenging in recommendation field.
 
 \item Data Mining. Researcher and developers normally facing enormous yet complex datasets, in which, only small percentage can be effectively utilized for recommendation learning. In many instances, big data brings not only valuable features information for learning tasks, but also, inevitably introducing noises alone the way. In place a computational effective data mining methodology is a key building block for recommender system.
- 
 \end{itemize}
 
-Living in a world of information, the information objects or data points around us are mostly interconnected with each other as a complicated network. Heterogenous Network, in a lot of time can serve as a reflection of real-world information without loss of generality. World wide web, biology networks, as well as traffic system, etc. can all be formed into an information network. Based on existing research, Heterogeneous Information Network had shown a lot of promises in the data mine field. Several of promising research progress has had been achieved in the HIN space. 
+Living in a world of information, the information objects or data points around us are mostly interconnected with each other as a Heterogenous Network. World wide web, biology networks, as well as traffic system, etc. can all be formed into an information network. Heterogeneous Information Network had shown a lot of promising potential in developing generic recommendation framework for solving challenges above.
 
-Known for its Semitic properties, Heterogeneous Information Network captures information and relationship between different types of data points. Comparing with traditional column-based data structure, Its adaptability in every changing data context, is much more forgiving for dynamic data models. Nodes and Meta-Path information mining is playing an important role in the data mining research domain. In recommender systems, a lot of time, we are tasked to making recommendations based on similarity. Techniques such PathSim \citep{Sun2011PathSim} and HeteSim \citep{Shi2013HeteSim} provided a rich foundation for similarity measure in HIN. Its results can be naturally borrowed into recommender system in KNN settings and Top-K recommendations. 
+% \subsection{Paper structure}
 
-In the feature learning space, node2vec (Grover and Leskovec 2016), an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, nodes is mapped to low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. Using a biased random walk procedure to explores diverse neighborhoods, node2vec can learn task-independent representations in complex networks. GraphSAGE (Hamilton et al. 2018) furthered the graph feature learning to be inductive instead of requiring all nodes in the graph to be presented during training of the embeddings. This extend the graph generalization ability to unseen nodes. From recommender system perspective, allowed less dependency of background knowledge in the recommendation problem domain \citep{Hu2018}.  
 
-Graph Classification using Structural Attention \citep{lee2018graph} is a good demonstration of attention-based learning techniques are applied in graph. Such feature learning ability makes a graph based data feature to be more versatile in facing data change and problem context switching. 
-Techniques, such as, User-guided embedding, can be invaluable for catering to recommender system with ever changing data streams. Such approach can also effectively reduce the data noise problem by exploiting the signals residing in the data.  
-
-Graph Neural Network (GNN) as an extension of deep learning approaches using graph data network structure have recently emerged. \citet{ying2018graph} shows promising signs of GNN being adopted in a large-scale deep recommendation engine. \citet{song2019session} propose a recommender system that model dynamic user behaviors and context-dependent social influence with a graph-attention neural network, which dynamically infers the influencers based on users’ current interests. Both of the research shown that GNN would be a promising approach for handling dynamic and temporal data in recommendation tasks.
