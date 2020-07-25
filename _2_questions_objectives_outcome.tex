@@ -15,7 +15,8 @@ How to develop a dynamic recommendation system that is adaptive to data changes 
 \subsection{Objectives}
 This research aim to achieve following objectives: 
 
-\subsubsection*{Objective 1: To develop a graph based approach that can taking account of complex metadata for various recommendation problems.}
+\bigskip
+\textbf{Objective 1:} To develop a graph based approach that can taking account of complex metadata for various recommendation problems.(Aim to answer question 1)
 
 Taking Collaborative Filtering based recommendation systems for example, commonly the model only uses user-item interactions dataset in training. Fusing item or user explicit information as part of Collaborative Filtering training are often very challenging and can hits computation or memory bottlenecks easily. Similar challenges apply to content based recommendation systems as well, where importance across multiple features become difficult to balance during the feature engineering process.
 
@@ -23,40 +24,33 @@ In this study, By leveraging the heterogeneous network structure, user-item inte
 
 % \textbf{Success condition:} Load raw data set into a graph structure that can effective present the information required for recommendation problem accordingly 
 
+\bigskip
+\textbf{Objective 2:} To develope a graph based recommendation training approach that is capable of incorporate new item/user data without available interactions during training. (Aim to answer question 1)
 
-\subsubsection*{Objective 2}
-To develope a graph embedding based method that is capable of dealing data sparsity and cold start problem.
+For most recommender systems, training dataset is limited by user-item interactions. Such limitation, excludes new item or user out of its training process when no interaction is available yet. on the other hand, recommendation prediction is limited to users and items at the point of training. As a result, it is a big challenge for making recommendations on fresh new data points. 
 
-% For the heterogenous information graph, evaluate the similarity of objects is the fundamental in data mining. In recommender system, it faces ever growing and evolving dataset. Working against massive datasets, and complex data transformation are common obstacles for producing a high quality recommendation solution. Developing an computational efficient similarity measure that fits for recommender system's use case, is a key milestone to ensure my research success.
+Heterogenous information graph provide multiple connection points to establish relationship between new node and existing nodes. node-node similarity within the same network can be learned based on nodes closeness and structural similarity measurement. Inside heterogeneous information graph, node-node relationship then can be further propagated via different meta-path, which allows reducing bias from highly connected nodes. Such network connectivity is a useful property of learning presentation of freshly added new data points for recommendations systems. In this study, we are aim to further develop Heterogenous information learning technique for solving pure cold start problem in recommendation predicting.
 
 % \textbf{Success condition:} Evaluate current graph-based similarity measures to determine and develop a fitting similarity approach for recommender system, which is, capable of solving Top-K recommendation and effective in Cold Start problems. 
+\bigskip
+\textbf{Objective 3:} To develop a graph neural network based recommendation approach that is capable of making recommendations inductively. (Aim to answer question 1)
 
+In Object 2 we are able to incorporate new data without interaction information to be part of model training process. However, the trained recommendation systems prediction ability is still limited by the training data sets. If we want to make predictions on new data that is emerge after training, retrain will be required. 
 
-\subsubsection*{Objective 3}
-To develop a graph based detection method to detect recommendation effectiveness and user-interest drift.
+With recent develope on GCN, which expanded node presentation learning ability to unseen data points. In this study, we are aim to incorporate such approach into our recommendation framework. So that trained recommendation systems would be capable of making predictions on unseen user/item without requiring retraining the model.
 
-% The rich information contained within the same HIN may only useful for certain recommendation problems. Nodes and path would have different weights when optimization objective or time is different. Developing a semi-supervised mining method would help recommender system to find different weights on based on the inter relationship between nodes and meta-paths. Reducing complex features into lower dimensions would also helping reduce the computation complex \citep{Cai2018} as mentioned in Object 2, Further simplify implementation difficulties in recommender systems. 
+\bigskip
+\textbf{Objective 4:} To develop a transfer learning method based on Graph Neural Networks for cross domains recommendations. (Aim to answer question 2)
 
-% \textbf{Success condition:} An embedding approach that is not only performant but also computational effective for mining large scale HIN. 
-
-
-\subsubsection*{Objective 4}
-To develop a graph neural network based recommendation method that is adaptive to new emerging data points.
+Keeping recommendation
 
 % Time factor is an important factor for making recommendations. Users past context could have direct impact of user current interest. \citet{Song2019} had shown that measurable improvement performance can be found in recommender system, when exploiting time information in the recommendation process. As a extension objective from Objective 2 and 3, including temporal dynamics and considering the transitive similarity between nodes and edges is another important factor in delivering quality results.
 
 % \textbf{Success condition:} A graph-based framework that is capable learning feature changes over time. 
+\bigskip
+\textbf{Objective 5:} To develop a adaptive recommender system case study for validating the proposed approaches.
 
-\subsubsection*{Objective 5}
-To develop a transfer learning method based on Graph Neural Networks for cross domain recommendations.
-
-% By putting research results from Objective 1,2,3 into a holistic framework, would enable us to develop a generic approach and making recommendation model adapting changes could significantly reduce the recommendation systems maintenance cost and keeping system performance over time. 
-% Instead of focusing the recommendation research on static datasets. In this research, we are trying to solve the real-world recommendation problem in a dynamic angle.
-
-% \textbf{Success condition:} A working recommender framework prototype using generic approach that is capable to  adapting to feature change and computational effective.  
-
-\subsubsection*{Objective 6}
-To develop a recommender system case study for validating the proposed approaches.
+By putting research results from Objective 1,2,3,4 into a holistic framework, would enable us to develop a generic approach and making recommendation model adapting changes. Such system could significantly reduce the recommendation systems maintenance cost and keeping system performance over time. 
 
 Following common datasets will be used for method verification: 
 
