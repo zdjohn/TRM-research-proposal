@@ -1,5 +1,45 @@
 \section{Literature Review}
 
+\subsection{Recommendation with Collaborative Filtering }
+3.1.1 Memory base Collaborative Filtering 
+
+Memory based Collaborative Filtering uses user rating data to compute the similarity between users or items, then make recommendations. It was an early approach used in many commercial systems. It's effective and easy to implement. Typical examples of this approach are neighbourhood-based CF and item-based/user-based top-N recommendations. There are two major problems with Memory based approach.  
+
+One is, when user and item number grows exponentially, Collaborative Filtering is unable to scale up easily, which limits its ability in making recommendation on large datasets. Some dimensional reduction technique can help, in terms of reducing the matrix size. However, we could also fall into the risks of information loss, which leads to accuracy degradation.  
+
+The other glaring problem for Matrix Factorization algorism is data sparsity. Sparsity problem could happen when user interaction data only covers small percentage of the total item data set. The other common case is Cold Start, which is, when user or item newly enters into the system. Due to the lack of new item or new user interaction histories, this makes Collaborative Filtering unable to make meaningful predictions.  
+
+Techniques such as Singular Value Decomposition (SVD), Latent Semantic Indexing (LSI) are adopted to alleviate the sparsity problem. Those techniques try to improve the performance by filtering out unusable user-item representations and reducing dimensional space. However, such techniques could only help reducing the sparsity impact to a degree, rather than solving the underlining cause. 
+
+There are some simple yet practical ways of solving new user cold start problems without rely on Machine Learning or Data Ming. For example, Netflix gives user survey on users signing up process. Then the collected data is feed into its Recommender model to archive better user retention rate. (Gomez-Uribe and Hunt 2015) 
+
+ 
+
+3.1.2 Model based Collaborative Filtering 
+
+Machine Learning Model or Data Mining techniques are normally used in model based collaborative filtering. There are many model-based CF algorithms. Bayesian networks, latent semantic models clustering models, just to make a few. The general approach is using machine learning pattern recognition ability to map complex pattern from large sparse data matrix into dense low-dimensional representation, thus helps easing the scalability problem.  
+
+Item2Vec (Barkan and Koenigstein 2016) is inspired by Word2Vec (Mikolov et al. 2013) Skip-Gram and Negative Sampling algorism It treats each item as corpus, then shuffles items order during the training process. In the end, items are embedded into a multi-dimensional vector space. So that, similarity between items can be easily measured by calculating the distance without requiring user data input.  
+
+Macedo et al. (2015) uses Contextual Learning approach, which exploit the contextual signals from event-based social networks, to solve the short-live and constant cold starting problem for ranking events content. 
+
+The challenge for model based Collaborative Filtering would come down to the complexity of model building, which cloud be costly.  Since it uses other models to make classifications or regressions, that means the recommender system would inevitably inherit the limitation of the model or data mining approach recommendation system adopted. For example, dimensional reduction technique used in model based Collaborative Filtering can leads to un-wanted data loss. 
+
+ 
+
+3.1.3 Hybrid Collaborative Filtering 
+
+Content-Based Collaborative filtering, Network-Based Collaborative filtering, and Knowledge-Graph-based Collaborative filtering, can all fall into the Hybrid Collaborative Filtering Category.  
+
+One big advantage of using Hybrid approach is it can significantly improve the cold start problem.  
+
+Entity2rec (Palumbo 2017) demonstrated that by using knowledge-graph, Property-specific user-item relatedness, and Global user-item relatedness, could significantly improve top-N recommendation performance. 
+
+By exploiting the network activity, Chen et al. (2010) uses homogeneous attributes of tweets and the heterogeneous nature of its network to solve the ranking problem at Tweeter. Agarwal et al. (2014) from LinkedIn uses the Taxonomy activity of its content to make time sensitive recommendation on its User Feed. 
+
+However, such approach also means it requires extra external data or special data structure to complement the sparse user interaction data. This adds complexity and cost. And in many cases, those the extra data support could be just unavailable. 
+
+\subsection{Graph/Network based recommendation}
 Known for its Semitic properties, Heterogeneous Information Network captures information and relationship between different types of data points. Comparing with traditional column-based data structure, Its adaptability in every changing data context, is much more forgiving for dynamic data models. Nodes and Meta-Path information mining is playing an important role in the data mining research domain. In recommender systems, a lot of time, we are tasked to making recommendations based on similarity. Techniques such PathSim \citep{Sun2011PathSim} and HeteSim \citep{Shi2013HeteSim} provided a rich foundation for similarity measure in HIN. Its results can be naturally borrowed into recommender system in KNN settings and Top-K recommendations. 
 
 In the feature learning space, node2vec (Grover and Leskovec 2016), an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, nodes is mapped to low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. Using a biased random walk procedure to explores diverse neighborhoods, node2vec can learn task-independent representations in complex networks. GraphSAGE (Hamilton et al. 2018) furthered the graph feature learning to be inductive instead of requiring all nodes in the graph to be presented during training of the embeddings. This extend the graph generalization ability to unseen nodes. From recommender system perspective, allowed less dependency of background knowledge in the recommendation problem domain \citep{Hu2018}.  
@@ -7,4 +47,6 @@ In the feature learning space, node2vec (Grover and Leskovec 2016), an algorithm
 Graph Classification using Structural Attention \citep{lee2018graph} is a good demonstration of attention-based learning techniques are applied in graph. Such feature learning ability makes a graph based data feature to be more versatile in facing data change and problem context switching. 
 Techniques, such as, User-guided embedding, can be invaluable for catering to recommender system with ever changing data streams. Such approach can also effectively reduce the data noise problem by exploiting the signals residing in the data.  
 
-Graph Neural Network (GNN) as an extension of deep learning approaches using graph data network structure have recently emerged. \citet{ying2018graph} shows promising signs of GNN being adopted in a large-scale deep recommendation engine. \citet{song2019session} propose a recommender system that model dynamic user behaviors and context-dependent social influence with a graph-attention neural network, which dynamically infers the influencers based on users’ current interests. Both of the research shown that GNN would be a promising approach for handling dynamic and temporal data in recommendation tasks.
+Graph Neural Network (GNN) as an extension of deep learning approaches using graph data network structure have recently emerged. \citet{ying2018graph} shows promising signs of GNN being adopted in a large-scale deep recommendation engine. \citet{song2019session} propose a recommender system that model dynamic user behaviors and context-dependent social influence with a graph-attention neural network, which dynamically infers the influencer based on users’ current interests. Both of the research shown that GNN would be a promising approach for handling dynamic and temporal data in recommendation tasks.
+
+\subsection{Transfer Learning}
