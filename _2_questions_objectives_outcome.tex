@@ -1,3 +1,5 @@
+%!TEX root = main.tex
+
 \section{Research Question, Objectives, and Expected Outcome}
 
 \subsection{Thesis statement and Questions}
@@ -27,7 +29,7 @@ In this study, By leveraging the heterogeneous network structure, user-item inte
 \bigskip
 \textbf{Objective 2:} To develope a graph based recommendation training approach that is capable of incorporate new item/user data without available interactions during training. (Aim to answer question 1)
 
-For most recommender systems, training dataset is limited by user-item interactions. Such limitation, excludes new item or user out of its training process when no interaction is available yet. on the other hand, recommendation prediction is limited to users and items at the point of training. As a result, it is a big challenge for making recommendations on fresh new data points. 
+For most recommender systems, training dataset is limited by user-item interactions availability. Such limitation, excludes new item or user out of training process when there is no interaction yet. On the other hand, recommendation prediction is limited to users and items at the point of training. As a result, it is a big challenge for making recommendations on fresh new data points. 
 
 Heterogenous information graph provide multiple connection points to establish relationship between new node and existing nodes. node-node similarity within the same network can be learned based on nodes closeness and structural similarity measurement. Inside heterogeneous information graph, node-node relationship then can be further propagated via different meta-path, which allows reducing bias from highly connected nodes. Such network connectivity is a useful property of learning presentation of freshly added new data points for recommendations systems. In this study, we are aim to further develop Heterogenous information learning technique for solving pure cold start problem in recommendation predicting.
 
@@ -42,9 +44,8 @@ With recent develope on GCN, which expanded node presentation learning ability t
 \bigskip
 \textbf{Objective 4:} To develop a transfer learning method based on Graph Neural Networks for cross domains recommendations. (Aim to answer question 2)
 
-Keeping recommendation
+In order to make recommendation systems
 
-% Time factor is an important factor for making recommendations. Users past context could have direct impact of user current interest. \citet{Song2019} had shown that measurable improvement performance can be found in recommender system, when exploiting time information in the recommendation process. As a extension objective from Objective 2 and 3, including temporal dynamics and considering the transitive similarity between nodes and edges is another important factor in delivering quality results.
 
 % \textbf{Success condition:} A graph-based framework that is capable learning feature changes over time. 
 \bigskip

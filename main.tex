@@ -1,5 +1,6 @@
+% !BIB program = biber
+
 \documentclass[12pt,a4 paper,title page]{article}
-% \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 \usepackage[british]{datetime2} % For urldate formatting
@@ -31,10 +32,11 @@
 
 \bibliographystyle{uts} % Import Harvard UTS style
 \setcitestyle{aysep={}} % Remove comma separation between author and year for in-text citations
+
 \title{Research Proposal: Heterogeneous Information Network based Recommender System}
 \author{\large\textbf{Di Zhang}, \\
 \textbf{supervisor: Professor Guanquan Zhang}, \\
-\textbf{co-supervisor: Professor Jie Lu}, \\
+\textbf{co-supervisor: Professor Jie Lu, Qian Zhang Phd. }, \\
 \textbf{Student number: 31292711}}
 
 \date{\Large{\textbf{October 2019}}}
@@ -42,6 +44,9 @@
 \begin{document}
 \sloppy
 \maketitle
+
+\tableofcontents
+\newpage
 
 \include{_1_introduction}
 
@@ -57,6 +62,6 @@
 
 \clearpage
 
-\bibliography{bibliography}
+\bibliography{reference.bib}
 
 \end{document}
