@@ -1,7 +1,8 @@
 \section{Literature Review}
 
 \subsection{Recommendation with Collaborative Filtering}
-\subsubsection{Memory base Collaborative Filtering}
+\bigskip
+\textbf{Memory base Collaborative Filtering}
 
 Memory based Collaborative Filtering uses user rating data to compute the similarity between users or items, then make recommendations. It was an early approach used in many commercial systems. It's effective and easy to implement. Typical examples of this approach are neighbourhood-based CF and item-based/user-based top-N recommendations. There are two major problems with Memory based approach.  
 
@@ -14,7 +15,8 @@ Techniques such as Singular Value Decomposition (SVD), Latent Semantic Indexing 
 There are some simple yet practical ways of solving new user cold start problems without rely on Machine Learning or Data Ming. For example, Netflix gives user survey on users signing up process. Then the collected data is feed into its Recommender model to archive better user retention rate. (Gomez-Uribe and Hunt 2015) 
 
 
-\subsubsection{Model based Collaborative Filtering}
+\bigskip
+\textbf{Model based Collaborative Filtering}
 
 Machine Learning Model or Data Mining techniques are normally used in model based collaborative filtering. There are many model-based CF algorithms. Bayesian networks, latent semantic models clustering models, just to make a few. The general approach is using machine learning pattern recognition ability to map complex pattern from large sparse data matrix into dense low-dimensional representation, thus helps easing the scalability problem.  
 
@@ -25,7 +27,8 @@ Macedo et al. (2015) uses Contextual Learning approach, which exploit the contex
 The challenge for model based Collaborative Filtering would come down to the complexity of model building, which cloud be costly.  Since it uses other models to make classifications or regressions, that means the recommender system would inevitably inherit the limitation of the model or data mining approach recommendation system adopted. For example, dimensional reduction technique used in model based Collaborative Filtering can leads to un-wanted data loss. 
  
 
-\subsubsection{Hybrid Collaborative Filtering}
+\bigskip
+\textbf{Hybrid Collaborative Filtering}
 
 Content-Based Collaborative filtering, Network-Based Collaborative filtering, and Knowledge-Graph-based Collaborative filtering, can all fall into the Hybrid Collaborative Filtering Category.  
 
@@ -48,3 +51,19 @@ Techniques, such as, User-guided embedding, can be invaluable for catering to re
 Graph Neural Network (GNN) as an extension of deep learning approaches using graph data network structure have recently emerged. \citet{ying2018graph} shows promising signs of GNN being adopted in a large-scale deep recommendation engine. \citet{song2019session} propose a recommender system that model dynamic user behaviors and context-dependent social influence with a graph-attention neural network, which dynamically infers the influencer based on users’ current interests. Both of the research shown that GNN would be a promising approach for handling dynamic and temporal data in recommendation tasks.
 
 \subsection{Transfer Learning}
+Recommendation systems can be built from two or more different but related domains \citep{fernandez2012cross}. Different domains would have different users or items, however there are also overlapping items or users across different domains. 
+
+\bigskip
+\textbf{Cross-domain Recommendation with Consistent Information Transfer}
+Consistent Information Transfer (CIT) uses domain adaptation technique to ensure the consistency of knowledge extracted between the source and target domain. 
+The procedure consists of five steps: (1) Users/items group clustering from the source and target domains; (2) Domain adaptation for generating consistent latent groups; (3) Consistent knowledge extraction from the latent groups; (4) Target domain group representations adjustment for retaining domain-specific characteristics; (5) A recommender system for the target domain is built. Specific algorithm is used for each step. Such as, Flexible Mixture Model (FMM) is commonly used to cluster the users and items separately \citep{si2003flexible}. Geodesic flow kernel (GFK) is a domain adaptation strategy \citep{gong2014learning}, etc. but substitutions can also be applied.
+
+\bigskip
+\textbf{Cross-domain Recommendation with Kernel-induced Knowledge Transfer}
+Kernel-induced Knowledge Transfer (KerKT) uses constraints on similarities between the entities in each domain as a bridge for knowledge transfer \citep{zhang2018cross}. It is important to maintain the intra-domain and inter-domain entity similarities, while measuring the similarities between entities in the same domain are easy, inter-domain entity similarities cannot be computed directly.  
+As a result, The overlapping entities are mapped and measured in the same feature space for similarities, subsequently, the non-overlapping entities similarities can be then measured by diffusion kernel completion.
+The kernel-induced completion has a strong connection to a bipartite edge completion problem\citep{he2016birank}. We use connected nodes in the graph representations for both the source and target domains. The overlapping entity naturally act as “bridge” to couple the two domains.
+
+% \bigskip
+% \textbf{Cross-domain Recommendation with Graph Neural Network}
+

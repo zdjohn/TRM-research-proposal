@@ -2,8 +2,10 @@
 
 \section{Research Question, Objectives, and Expected Outcome}
 
-\subsection{Thesis statement and Questions}
+\subsection{Statement}
 By learning rich semantic information of knowledge graph can help in developing recommender systems, that is capable of maintaining effectiveness overtime with relative low maintenance cost. 
+
+\subsection{Questions}
 
 \subsubsection*{Question 1}
 How to present users and items in a heterogeneous information graph for recommendation problems?
@@ -37,19 +39,20 @@ Heterogenous information graph provide multiple connection points to establish r
 \bigskip
 \textbf{Objective 3:} To develop a graph neural network based recommendation approach that is capable of making recommendations inductively. (Aim to answer question 1)
 
-In Object 2 we are able to incorporate new data without interaction information to be part of model training process. However, the trained recommendation systems prediction ability is still limited by the training data sets. If we want to make predictions on new data that is emerge after training, retrain will be required. 
+In Object 2 we are able to incorporate new data without interaction information to be part of model training process. However, the trained recommendation systems prediction ability is still limited by the training data sets. If we want to make predictions on new data that is emerged after training, retrain will be required. 
 
 With recent develope on GCN, which expanded node presentation learning ability to unseen data points. In this study, we are aim to incorporate such approach into our recommendation framework. So that trained recommendation systems would be capable of making predictions on unseen user/item without requiring retraining the model.
 
 \bigskip
-\textbf{Objective 4:} To develop a transfer learning method based on Graph Neural Networks for cross domains recommendations. (Aim to answer question 2)
+\textbf{Objective 4:} To develop a transfer learning method based on Graph Neural Networks for cross domains recommendations. (Aim to answer question 2 and 3)
 
-In order to make recommendation systems
+Subsequently to Object 2 and 3, single domain graph also commonly suffers from data sparsity problems. In the era of user generated content, new contents is added every second. Retraining recommendation systems with large volume datasets are not only costly but also impractical.
 
+In this part of the research we try to use graph structure to transfer knowledge from source domain to target domain to alleviate the data issue, improve recommendation performance and reduce on going model maintenance cost.
 
 % \textbf{Success condition:} A graph-based framework that is capable learning feature changes over time. 
 \bigskip
-\textbf{Objective 5:} To develop a adaptive recommender system case study for validating the proposed approaches.
+\textbf{Objective 5:} To develop a adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 3)
 
 By putting research results from Objective 1,2,3,4 into a holistic framework, would enable us to develop a generic approach and making recommendation model adapting changes. Such system could significantly reduce the recommendation systems maintenance cost and keeping system performance over time. 
 
