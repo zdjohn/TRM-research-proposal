@@ -2,19 +2,19 @@
 
 \section{Research Question, Objectives, and Expected Outcome}
 
-\subsection{Statement}
-By learning rich semantic information of knowledge graph can help in developing recommender systems, that is capable of maintaining effectiveness overtime with relative low maintenance cost. 
+Recommender Systems (RS) makes prediction of user-item interests, by learning historical interaction records. Keeping a recommender system effective over time and adaptive to constant data updates is a challenging and costly task. For large systems, routinely retraining model is both economically expensive and time consuming. As a result, finding a recommendation approach, that not only performs well but also easy to maintain, is becoming a important aspect in RS adoption for real-world applications.
+In this research, we aim to develop a recommender systems by learning rich semantic information of knowledge graph, that is, adaptive, easy on maintenance, and capable of making recommendation in constant changing data environment. 
 
 \subsection{Questions}
 
 \subsubsection*{Question 1}
-How to present users and items in a heterogeneous information graph for recommendation problems?
+How to present users and items in a knowledge graph for recommendation problems?
 
 \subsubsection*{Question 2}
 How to effectively transfer knowledge to assist recommendation among multiple domains with knowledge graph?
 
 \subsubsection*{Question 3}
-How to develop a dynamic recommendation system that is adaptive to data changes overtime?
+How to develop a dynamic recommendation system that is adaptive to new data updates overtime?
 
 \subsection{Objectives}
 This research aim to achieve following objectives: 
@@ -24,35 +24,32 @@ This research aim to achieve following objectives:
 
 Taking Collaborative Filtering based recommendation systems for example, commonly the model only uses user-item interactions dataset in training. Fusing item or user explicit information as part of Collaborative Filtering training are often very challenging and can hits computation or memory bottlenecks easily. Similar challenges apply to content based recommendation systems as well, where importance across multiple features become difficult to balance during the feature engineering process.
 
-In this study, By leveraging the heterogeneous network structure, user-item interactions, as well as users/items attributes, can be naturally fused in to single Multiple-Hub Network \citep{Shi2017} structure. Hence, a generic approach, that project users, items, and their related feature information into heterogeneous Information Network, can be developed for accommodating richer information in recommendation model training.
-
-% \textbf{Success condition:} Load raw data set into a graph structure that can effective present the information required for recommendation problem accordingly 
+In this study, By leveraging the heterogeneous network structure, user-item interactions, as well as users/items attributes, can be naturally fused in to single Multiple-Hub Network \citep{Shi2017} structure. Hence, a generic approach, that project users, items, and their related feature information as knowledge graph, can be developed for accommodating richer information in recommendation model training.
 
 \bigskip
-\textbf{Objective 2:} To develope a graph based recommendation training approach that is capable of incorporate new item/user data without available interactions during training. (Aim to answer question 1)
-
-For most recommender systems, training dataset is limited by user-item interactions availability. Such limitation, excludes new item or user out of training process when there is no interaction yet. On the other hand, recommendation prediction is limited to users and items at the point of training. As a result, it is a big challenge for making recommendations on fresh new data points. 
-
-Heterogenous information graph provide multiple connection points to establish relationship between new node and existing nodes. node-node similarity within the same network can be learned based on nodes closeness and structural similarity measurement. Inside heterogeneous information graph, node-node relationship then can be further propagated via different meta-path, which allows reducing bias from highly connected nodes. Such network connectivity is a useful property of learning presentation of freshly added new data points for recommendations systems. In this study, we are aim to further develop Heterogenous information learning technique for solving pure cold start problem in recommendation predicting.
-
-% \textbf{Success condition:} Evaluate current graph-based similarity measures to determine and develop a fitting similarity approach for recommender system, which is, capable of solving Top-K recommendation and effective in Cold Start problems. 
-\bigskip
-\textbf{Objective 3:} To develop a graph neural network based recommendation approach that is capable of making recommendations inductively. (Aim to answer question 1)
+\textbf{Objective 2:} To develop a graph neural network based recommendation approach that is capable of making recommendations inductively. (Aim to answer question 1)
 
 In Object 2 we are able to incorporate new data without interaction information to be part of model training process. However, the trained recommendation systems prediction ability is still limited by the training data sets. If we want to make predictions on new data that is emerged after training, retrain will be required. 
 
 With recent develope on GCN, which expanded node presentation learning ability to unseen data points. In this study, we are aim to incorporate such approach into our recommendation framework. So that trained recommendation systems would be capable of making predictions on unseen user/item without requiring retraining the model.
 
 \bigskip
-\textbf{Objective 4:} To develop a transfer learning method based on Graph Neural Networks for cross domains recommendations. (Aim to answer question 2 and 3)
+\textbf{Objective 3:} To develop a transfer learning method based on Graph Neural Networks for cross domains recommendations. (Aim to answer question 2 and 3)
 
 Subsequently to Object 2 and 3, single domain graph also commonly suffers from data sparsity problems. In the era of user generated content, new contents is added every second. Retraining recommendation systems with large volume datasets are not only costly but also impractical.
 
 In this part of the research we try to use graph structure to transfer knowledge from source domain to target domain to alleviate the data issue, improve recommendation performance and reduce on going model maintenance cost.
 
+\bigskip
+\textbf{Objective 4:} To develope a graph based recommendation training approach that is capable of incorporate new item/user data without available interactions during training. (Aim to answer question 3)
+
+For most recommender systems, training dataset is limited by user-item interactions availability. Such limitation, excludes new item or user out of training process when there is no interaction yet. On the other hand, recommendation prediction is limited to users and items at the point of training. As a result, it is a big challenge for making recommendations on fresh new data points. 
+
+knowledge graph provide multiple connection points to establish relationship between new node and existing nodes. node-node similarity within the same network can be learned based on nodes closeness and structural similarity measurement. Inside the graph, node-node relationship then can be further propagated via different meta-path, which allows reducing bias from highly connected nodes. Such network connectivity is a useful property of learning presentation of freshly added new data points for recommendations systems. In this study, we are aim to further develop graph learning technique for solving pure cold start problem in recommendation predicting.
+
 % \textbf{Success condition:} A graph-based framework that is capable learning feature changes over time. 
 \bigskip
-\textbf{Objective 5:} To develop a adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 3)
+\textbf{Objective 5:} To develop a adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 1,2,3)
 
 By putting research results from Objective 1,2,3,4 into a holistic framework, would enable us to develop a generic approach and making recommendation model adapting changes. Such system could significantly reduce the recommendation systems maintenance cost and keeping system performance over time. 
 
