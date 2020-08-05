@@ -20,7 +20,7 @@ There are some simple yet practical ways of solving new user cold start problems
 
 Machine Learning Model or Data Mining techniques are normally used in model based collaborative filtering. There are many model-based CF algorithms. Bayesian networks, latent semantic models clustering models, just to make a few. The general approach is using machine learning pattern recognition ability to map complex pattern from large sparse data matrix into dense low-dimensional representation, thus helps easing the scalability problem.  
 
-Item2Vec (Barkan and Koenigstein 2016) is inspired by Word2Vec (Mikolov et al. 2013) Skip-Gram and Negative Sampling algorism It treats each item as corpus, then shuffles items order during the training process. In the end, items are embedded into a multi-dimensional vector space. So that, similarity between items can be easily measured by calculating the distance without requiring user data input.  
+Item2Vec \citep{barkan2016item2vec} is inspired by Word2Vec \citep{mikolov2013distributed} Skip-Gram and Negative Sampling algorism It treats each item as corpus, then shuffles items order during the training process. In the end, items are embedded into a multi-dimensional vector space. So that, similarity between items can be easily measured by calculating the distance without requiring user data input.  
 
 Macedo et al. (2015) uses Contextual Learning approach, which exploit the contextual signals from event-based social networks, to solve the short-live and constant cold starting problem for ranking events content. 
 

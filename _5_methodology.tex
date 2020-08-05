@@ -1,38 +1,38 @@
 \section{Methodology}
 
-\subsection{Task 1: propose a graph structure modeling methodology for recommender system}
+\subsection{Task 1: propose a knowledge graph based learning method for user/item features}
 It is challenging to develop effective data extraction and exploitation methods for Heterogeneous Information Network based recommender system.
 
 \subsubsection*{Step 1: develop a generic graph structured data for recommendation problem}
 
-Graph structure is being adopted in a wide range of applications. However, to our best of knowledge, none of them is taking a generic approach in forming the heterogeneous graph for recommender systems. HIN normally only optimized for a specific problem, and less adaptable to information evolution over time. 
-Based on the nature of recommender system, we propose to accommodate not only user-item interaction, item features, and user profile information into the same heterogeneous information network. We also propose to further explore the semantic information by normalizing features on both item feature and user profile information into more atomic feature nodes. such practice would bring multiple benefits: 
+% Graph structure is being adopted in a wide range of applications. However, to our best of knowledge, none of them is taking a generic approach in forming the heterogeneous graph for recommender systems. HIN normally only optimized for a specific problem, and less adaptable to information evolution over time. 
+% Based on the nature of recommender system, we propose to accommodate not only user-item interaction, item features, and user profile information into the same heterogeneous information network. We also propose to further explore the semantic information by normalizing features on both item feature and user profile information into more atomic feature nodes. such practice would bring multiple benefits: 
 
-\begin{itemize}
+% \begin{itemize}
     
-\item[1] Reduce data sparsity. By breaking up item features into more generic feature nodes would help increase the density of the network, and increase possible connectivity (mate-path) between nodes.
+% \item[1] Reduce data sparsity. By breaking up item features into more generic feature nodes would help increase the density of the network, and increase possible connectivity (mate-path) between nodes.
 
-\item[2] With that, new in coming information would also transformed through the same decomposing process, hence making the graph structure adaptable to ever evolving changes.
+% \item[2] With that, new in coming information would also transformed through the same decomposing process, hence making the graph structure adaptable to ever evolving changes.
 
-\item[3] As the information graph cumulates auxiliary information in a holistic approach, suc structure also making problem context switch possible.
+% \item[3] As the information graph cumulates auxiliary information in a holistic approach, suc structure also making problem context switch possible.
 
-\end{itemize}
+% \end{itemize}
 
-Of course, having a generic purpose HIN as training source introduce both complexity and noise. which we would discuss in Task 2 and Task 3.
+% Of course, having a generic purpose HIN as training source introduce both complexity and noise. which we would discuss in Task 2 and Task 3.
 
 
 \subsubsection*{Step 2: to develop transformation rule for the graph structure}
 
-Recommendation test data sets are normally saved in csv format, which is quite different from the graph data structure we proposed above. Multi-Hub Network structure will be developed to transform the flat user-item data sets into a holistic feature-rich graph structure. Fig. \ref{fig:multihub}
+% Recommendation test data sets are normally saved in column based data frame format, which is quite different from the graph data structure we proposed above. Multi-Hub Network structure will be developed to transform the flat user-item data sets into a holistic feature-rich graph structure. Fig. \ref{fig:multihub}
 
-\begin{figure*}[!t]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figs/multi-hub.png}
-    \caption{a multi-hub network structure based on Movielens data}\label{fig:multihub}
-\end{figure*}
+% \begin{figure*}[!t]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figs/multi-hub.png}
+%     \caption{a multi-hub network structure based on Movielens data}\label{fig:multihub}
+% \end{figure*}
 
 
-\subsection{Task 2: develop a comprehensive graph similarity measure}
+\subsection{Task 2: develop a similarity measure for recommender systems that ia based on knowledge graph}
 
 Similarity measure the basis of many recommendation tasks, It evaluate the proximity among objects. Feature-based and link-based approaches are 2 main Similarity measures in HIN. 
 
@@ -56,8 +56,6 @@ HeteSim \citep{Shi2013HeteSim} proposed evaluate the relevance of any object pai
 
 For recommender systems, its a common use case for item-item and user-item recommendations based on similarity. Those measure is especially valuable when user-item interaction data is scarce, such as cold start problem. 
 
-\subsection{Task 3: use embedding approach of large scale Information Network}
-
 In recommendation settings, if we consider the graph structured HIN as a generic data repository. Such repository is not only capable of capture inter-relationship and semantic information between different types of data points (nodes). it is also adaptive to new information and grow the network organically. This allows HIN data repository capable contain rich information for complex recommendation problems. The challenge comes with a ever growing a graph network, is the noises increase alone with information cumulation.
 
 Effective graph analytics provides users a deeper understanding of what is behind the data, and thus can benefit a lot of useful applications \citep{Cai2018}. Graph embedding is an effective yet efficient way to solve the graph analytics problem, while reduce the high computation and space cost, where the network structural information and graph properties are preserved into a low dimensional space.
@@ -76,8 +74,10 @@ On the other hand, GraphSAGE defined nodes proximity by comparing nodes' neighbo
 Subsequently, fusion functions is used to integrate multiple node or meta-path embeddings into a single representation for recommendation. These fusion functions provide flexible ways to transform HIN embeddings into useful information for recommendation.
 
 
-\subsection{Task 4: extend Heterogeneous Information Network to accommodate temporary information through time}
 
+\subsection{Task 3: use embedding approach for inductive recommendation predictions}
+
+inductive recommendation predictions
 Most of the research mentioned above is based on static data. After defining suitable Similarity Measure (Task 2) and fitting Embedding Approach (Task 3) for the recommender system. In this task we would like to extend previous tasks to include temporal information, and data dynamics for our recommender system to taking account. \citet{he2014exploiting} extend the meta
 path-based similarity measure PathSim by incorporating richer information, such as
 transitive similarity and temporal dynamics. 
@@ -86,6 +86,10 @@ At the same time, in order to make HIN based recommender system to be time aware
 The goal of graph spatial-temporal networks can be forecasting future node values or labels, or predicting spatial-temporal graph labels. Recent studies have explored the use of GCNs for action recognition \citep{yan2018spatial}, and GCNs in combination of with RNN \citep{li2017diffusion} or CNN \citep{yu2017spatio} in transportation traffic prediction.
 
 So far GCNBased Graph Spatial-Temporal Networks have limited implementation in the recommender system. Based on the embedding methodology mentioned in Task 3, users and item nodes relationship can be treated as adjacency matrix, hence, user can be represented as a summation of K adjacency matrices of item-user edge. Subsequently, Graph Convolution can then applying different weights to its neighboring edges and sum them. By extending the temporal flow as graph edges, using a unified GCN model, spatial and temporal information can be extracted jointly.
+
+\subsection{Task 4: transfer learning tasks}
+
+
 
 \subsection{Task 5: develop recommendation framework based Heterogeneous Information Network}
 
