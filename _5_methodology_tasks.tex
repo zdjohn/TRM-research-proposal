@@ -1,0 +1,50 @@
+\section{Methodology}
+
+\subsection{Task 1: propose a knowledge graph based learning method for user/item features}
+It is a challenge for developing effective feature extraction and exploitation methods in recommender system. Further more many recommender systems are only capable of processing structured data. Making use of rich semantic information from heterogenous knowledge graph can bring a number of benefits for recommender system enhancement.
+
+step 1: meta-path
+
+step 2: attention
+
+% step 3: inductive
+
+\subsection{Task 2: build non-interacted item/user profile via knowledge graph}
+
+step 1: 
+
+step 2: training
+
+\subsection{Task 3: leverage knowledge graph to calculate unseen entity profile for recommender system inference}
+
+\subsection{Task 4: build a framework for cross domain knowledge transfer}
+
+\subsection{Task 5: develop recommendation framework based Heterogeneous Information Network}
+
+Due to the flexibility in modelling data heterogeneity, HIN based recommendation adopts the model complex characterize and heterogeneous auxiliary data for recommender systems.
+
+\subsubsection*{Step 1: HIN based recommendation on static data sets}
+There are mainly 2 approaches in static data settings for performing recommendation tasks via HIN. 
+
+Similarity base approach, which is mostly mentioned in task 2. The strength of similarity based approach are mostly comes down to computation efficiency. some of the approaches, such as PathSim \citep{Sun2011PathSim}, and AvgSim \citep{xiao2016avgsim} had been well researched and have a number mathematical optimization for recommender problem. however, latent structure features of users and items relationship are not fully used, when using path/node based similarity methods.
+
+Alternatively, as mentioned in task 3, node embedding and meta-path embedding had been a rising research topic in recently years. Notables, \citet{shi2018heterogeneous} had proposed using node embeddings are first transformed by a set of fusion functions, and then extend the information into a matrix factorization (MF) model. The extended MF model together with fusion functions are jointly optimized for the rating prediction task.
+
+\subsubsection*{Step 2: HIN based recommendation on dynamic temporal data sets}
+
+In real-world settings, users interest is dynamic and influenced by the past experience. Temporal information is important for improving recommendations' accuracy. However due to the complexity of graph structure and computation restrictions. its a big challenge for reflecting both information into recommender system. Recent development in Graph Neural Network (GNN) and Attention Model had shown some exciting development in taking account of temporal information and user-item interaction sequences \citep{yu2017spatio}.  
+
+There are two basic approaches currently exploring how to generalize CNNs to structured data forms: 
+The First is to expand the spatial definition of a convolution \citep{niepert2016learning}. It rearranges the vertices into certain grid forms to perform convolution operations. The Second is to manipulate in the spectral domain with graph Fourier transforms \citep{bruna2013spectral}. Spectral graph convolution uses spectral framework to apply convolutions in spectral domains.
+
+\citet{song2019session} propose a dynamic-graph-attention neural network based recommender system for online communities. \citet{Hu2018recommender} propose a unified model LGRec to fuse local and global information for top-N recommendation in HIN.
+
+
+\subsection{Task 6:  A case study for validating the proposed recommendation approaches}
+
+The research will be verified from two aspects: 
+
+First, public datasets, such as DBLP DBLP Citation Networks, MovieLens data sets (http://www.grouplens.org/node/73), will be used to verify the effectiveness of the graph modeling approach for recommender system. Similarity measure as well as adaptability are the core parts of the approach, each aspects will be verified accordingly. 
+
+Second, the approach will be used in a real world data sets. Real data sets from the tourism and real-estate industry will be used to further test the effectiveness of the method.
+

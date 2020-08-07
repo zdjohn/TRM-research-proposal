@@ -1,6 +1,10 @@
 \section{Literature Review}
 
-\subsection{Recommendation with Collaborative Filtering}
+\subsection{Basic Recommendation Methods}
+
+\bigskip
+\subsubsection{CF based recommendation systems}
+
 \bigskip
 \textbf{Memory base Collaborative Filtering}
 
@@ -27,21 +31,28 @@ Macedo et al. (2015) uses Contextual Learning approach, which exploit the contex
 The challenge for model based Collaborative Filtering would come down to the complexity of model building, which cloud be costly.  Since it uses other models to make classifications or regressions, that means the recommender system would inevitably inherit the limitation of the model or data mining approach recommendation system adopted. For example, dimensional reduction technique used in model based Collaborative Filtering can leads to un-wanted data loss. 
  
 
+
 \bigskip
-\textbf{Hybrid Collaborative Filtering}
+\subsubsection{Content based recommendation systems}
 
-Content-Based Collaborative filtering, Network-Based Collaborative filtering, and Knowledge-Graph-based Collaborative filtering, can all fall into the Hybrid Collaborative Filtering Category.  
+Content-based recommendation methods are dependent on the user’s own histori- cal records and independent of other users, making it different from the CF-based recommendation methods. As the name suggests, content-based recommendation methods aim to recommend items whose contents are similar to those in which a specific user was interested in previously [Shardanand and Maes (1995)]. The content-based recommendation methods derive from information retrieval and focus on items with text information such as documents, news or Web pages. For example, users who liked articles that have discussed “recommender systems” and “database” will prefer articles with the same topics. The basic steps of content-based recommendation methods are: (1) To
+represent items with attributes and features that are important and discriminative; (2) To analyze the description of the items preferred by a particular user to determine the principal common attributes (preferences) that can be used to distinguish these items. These preferences are stored in a user profile; and (3) To compare each item’s attributes with the user profile so that only items that have a
 
-One big advantage of using Hybrid approach is it can significantly improve the cold start problem.  
+% \bigskip
+% \textbf{Hybrid Collaborative Filtering}
 
-Entity2rec (Palumbo 2017) demonstrated that by using knowledge-graph, Property-specific user-item relatedness, and Global user-item relatedness, could significantly improve top-N recommendation performance. 
+% Content-Based Collaborative filtering, Network-Based Collaborative filtering, and Knowledge-Graph-based Collaborative filtering, can all fall into the Hybrid Collaborative Filtering Category.  
 
-By exploiting the network activity, Chen et al. (2010) uses homogeneous attributes of tweets and the heterogeneous nature of its network to solve the ranking problem at Tweeter. Agarwal et al. (2014) from LinkedIn uses the Taxonomy activity of its content to make time sensitive recommendation on its User Feed. 
+% One big advantage of using Hybrid approach is it can significantly improve the cold start problem.  
 
-However, such approach also means it requires extra external data or special data structure to complement the sparse user interaction data. This adds complexity and cost. And in many cases, those the extra data support could be just unavailable. 
+% Entity2rec (Palumbo 2017) demonstrated that by using knowledge-graph, Property-specific user-item relatedness, and Global user-item relatedness, could significantly improve top-N recommendation performance. 
 
-\subsection{Graph/Network based recommendation}
-Known for its Semitic properties, heterogeneous knowledge graph captures information and relationship between different types of data points. Comparing with traditional column-based data structure, Its adaptability in every changing data context, is much more forgiving for dynamic data models. Nodes and Meta-Path information mining is playing an important role in the data mining research domain. In recommender systems, a lot of time, we are tasked to making recommendations based on similarity. Techniques such PathSim \citep{Sun2011PathSim} and HeteSim \citep{Shi2013HeteSim} provided a rich foundation for similarity measure in HIN. Its results can be naturally borrowed into recommender system in KNN settings and Top-K recommendations. 
+% By exploiting the network activity, Chen et al. (2010) uses homogeneous attributes of tweets and the heterogeneous nature of its network to solve the ranking problem at Tweeter. Agarwal et al. (2014) from LinkedIn uses the Taxonomy activity of its content to make time sensitive recommendation on its User Feed. 
+
+% However, such approach also means it requires extra external data or special data structure to complement the sparse user interaction data. This adds complexity and cost. And in many cases, those the extra data support could be just unavailable. 
+
+\subsubsection{Knowledge Graph based recommendation}
+Known for its Semitic properties, knowledge graph captures information and relationship between different types of data points. Comparing with traditional column-based data structure, Its adaptability in every changing data context, is much more forgiving for dynamic data models. Nodes and Meta-Path information mining is playing an important role in the data mining research domain. In recommender systems, a lot of time, we are tasked to making recommendations based on similarity. Techniques such PathSim \citep{Sun2011PathSim} and HeteSim \citep{Shi2013HeteSim} provided a rich foundation for similarity measure in HIN. Its results can be naturally borrowed into recommender system in KNN settings and Top-K recommendations. 
 
 In the feature learning space, node2vec (Grover and Leskovec 2016), an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, nodes is mapped to low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. Using a biased random walk procedure to explores diverse neighborhoods, node2vec can learn task-independent representations in complex networks. GraphSAGE (Hamilton et al. 2018) furthered the graph feature learning to be inductive instead of requiring all nodes in the graph to be presented during training of the embeddings. This extend the graph generalization ability to unseen nodes. From recommender system perspective, allowed less dependency of background knowledge in the recommendation problem domain \citep{Hu2018}.  
 
