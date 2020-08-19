@@ -2,61 +2,51 @@
 
 \section{Research Question, Objectives, and Expected Outcome}
 
-Recommender Systems (RS) predicts user-item interests by learning historical interaction records. Keeping a recommender system effective over time and adaptive to constant data updates is a challenging and costly task. For large systems, routinely retraining model is both economically expensive and time-consuming. As a result, finding a recommendation approach, that not only performs well but also easy to maintain, is becoming an essential aspect in RS real-world adoptions.
-In this research, we aim to develop a recommender system by learning rich semantic information of knowledge graph. That is, adaptive, easy on maintenance, and capable of making recommendations in an environment that faces continuously changing data. 
+Recommender Systems (RS) predicts user-item interests by learning historical interaction records. Though RS is well recognized by the industry, at different stages, it still faces a number of challenges. 
+To be more specific, in early launching stage, RS commonly faces data sparsity problem due to the lack of historical interactions. i.e. data sparsity problem. 
+Subsequently, many RSs also face limitation on new emerging data at post deployment stage, which known as cold start. 
+
+In this research, we explore the transfer learning application on across domains knowledge graphs to reduce the launching barriers for recommender system on early stage. Then, we leverage the rich semantic information of knowledge graph to build a adaptive recommender system for better quality prediction in cold start settings. 
 
 \subsection{Questions}
 
 \subsubsection*{Question 1}
-How to present users and items information in a knowledge graph for recommendation?
+How to represent users and items in a unified knowledge graph with user-item interactions and meta data for recommender system?
 
 \subsubsection*{Question 2}
-How to effectively transfer knowledge to assist recommendation among multiple knowledge graphs?
+How to develop a recommender system that is adaptive to new data overtime?
 
 \subsubsection*{Question 3}
-How to develop a cross-domain recommender system that is adaptive to new data overtime?
+How to effectively transfer knowledge to assist recommendation among multiple knowledge graphs?
 
 \subsection{Objectives}
-This research aim to achieve following objectives: 
+This research aims to achieve following objectives: 
 
 \bigskip
-\textbf{Objective 1:} To develop a graph based feature learning method for recommendation systems.(Aim to answer question 1)
+\textbf{Objective 1:} To develop a graph based representation method to overcome sparsity problems.(Aim to answer question 1)
 
-Collaborative Filtering (CF) based recommendation systems commonly, only uses user-item interactions dataset in training. However, such approach is ignoring important user profile and item feature details. In hybrid approach, when combining CF with content based recommendation approach, feature engineering is a big challenge in terms of balancing importance across multiple user or item features. Such fusion approach also faces computation and memory management challenges. 
+Collaborative Filtering (CF) based recommender systems, commonly, only uses user-item interactions records in training. Such approach ignores important user/item feature, and is unable to learn non-interacted user/item entities. 
 
-In this study, by leveraging the heterogeneous networks, user-item interactions, as well as users/items attributes, can be naturally projected into single Multiple-Hub Network \citep{Shi2017} structure. Those users/items and their relationship can be treated as nodes and edges in a generic knowledge graph. Nodes presentation then can be learned holistically by traversing the knowledge graph. As a result, similarities between nodes can be measure by both distance and neighborhood structure. Such approach would allow recommender systems to incorporate richer information for trainings and predictions.
+In this objective, by leveraging the heterogeneous graph, user-item interactions, as well as users/items attributes, can be naturally projected into a single multiple-hub network \citep{Shi2017} structure. Nodes representation then can be learned holistically by traversing the meta-path of the graph. Such approach allows RS model to incorporate richer information from knowledge graph to reduce data sparsity and overcome the interaction limitation during training process.
+
 
 \bigskip
-\textbf{Objective 2:} To develop a recommendation approach that is capable of making recommendations on unseen datasets. (Aim to answer question 1 and 3)
+\textbf{Objective 2:} To develop a recommendation approach that is capable of making predictions on newly emerged data points. (Aim to answer question 2)
 
-Commonly, recommender systems use user/item latent feature for prediction, which were learned through a static datasets. For new item or user that appeared post training, their latent feature would not be known, until they were included in the retrain later.
+Commonly, recommender systems use user/item latent feature for prediction, which were trained on static datasets. For new item or user that appeared post training, their latent feature would not be known until being included in the later re-training. It is known as cold start problem.
 
-In this study, we aim to develope a recommender system that is capable of making predictions on unseen data points, without require retaining. New entity presentation is calculated by incorporate the inductive property of knowledge graph.
+In this study, we aim to develope a recommender system that is capable of making predictions on these unseen data points without mandatory model re-training. New entity representation is calculated inductively via knowledge graph instead of being looked up from cache for recommendation predictions.
+
 
 \bigskip
-\textbf{Objective 3:} To develop a framework that is capable of training with both interacted and non-interacted user/item jointly for recommendation (Aim to answer question 2 and 3)
+\textbf{Objective 3:} To develop a graph neural networks base method to transfer knowledge cross domains. (Aim to answer question 3)
 
-The other challenge most recommender systems face is, its training dataset being limited by user-item interactions availability. Item or user do not have any interaction are excluded out of the training process. As a result, the recommendation model is unable to make predictions for those non-interacted users or items.
-Knowledge graph provides multiple connection points to establish relationships between nodes beyond user-item interactions. Inside the graph, the node-node relationship then can be further propagated via different meta-path, which allows reducing bias from highly connected nodes. 
-
-Here we aim to use the meta-path property to learn presentation on both interacted and non-interacted nodes through the same training process. User-item interaction knowledge is transferred via knowledge graph to those non-interacted node. So that the trained recommendation model can making prediction including non-interacted user/item.
+Subsequent to object 1 and 2, the single domain recommender system frequently suffers from data sparsity problems in its early launching phrase. In order to alleviate the issue and assure prediction quality, our research tries to develop a knowledge transfer method, which improves data density by transferring learnings from a similar but denser domain through the knowledge graph. So that, the recommender system can make high quality predictions early on.
 
 \bigskip
-\textbf{Objective 4:} To develop a learning method based on Graph Neural Networks that can transfer knowledge cross domains. (Aim to answer question 2)
+\textbf{Objective 4:} To develop a adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 1,2,3)
 
-Subsequent to object 2 and 3, some single domain graph suffers from data sparsity problems. In order to alleviate the issue,
-our research try to use graph propagation to transfer knowledge from a more dense source to target domain for recommendation performance improvement.
-
-% The source domain can either coming from a similar (but different) problem domain. 
-
-% In the era of user generated content, new contents is added every second. Retraining recommendation systems with large volume datasets are not only costly but also impractical.
-
-
-% \textbf{Success condition:} A graph-based framework that is capable learning feature changes over time. 
-\bigskip
-\textbf{Objective 5:} To develop a adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 1,2,3)
-
-By putting research results from Objective 1,2,3,4 into a holistic framework, would enable us to develop a generic approach and making recommendation model adapting to data changes. Such system could significantly reduce the recommendation systems maintenance cost and keeping system performance over time. 
+By putting research results from Objective 1,2,3 into a holistic framework. It would enable us to develop a generic approach and making recommendation model adapting to data changes. Such system would significantly ease the RS go-live effort, improve prediction quality and reduce the maintenance cost over time. 
 
 Following common datasets will be used for method verification: 
 
@@ -69,5 +59,3 @@ Following common datasets will be used for method verification:
 \item DBLP Citation Networks (https://dblp.uni-trier.de)  
 
 \end{itemize}
-
-Case studies will be conducted on real estate and tourism recommendations.
