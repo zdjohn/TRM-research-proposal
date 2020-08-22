@@ -1,80 +1,66 @@
 \section{Literature Review}
+This research is related to graph based entity representation and learning transfer on recommender systems.
 
-\subsection{Basic Recommendation Methods}
+\subsection{Recommender systems}
+Recommender systems can be regarded as a algorithmic decision-making strategy, which contain a set of measure, analysis and prediction algorithms. It is capable of predicting users interests under large and complex information environment.
 
 \bigskip
-\subsubsection{CF based recommender systems}
+\subsubsection{Collaborative Filtering based recommender systems}
+Collaborative Filtering (CF) based recommender systems are one of the most widely used recommender systems. The key intuition of the model, that is similar users share similar interests in item preferences, and vice versa. CF can further divided into memory base CF, model based CF, and Hybrid models.
 
-\bigskip
-\textbf{Memory base Collaborative Filtering}
+Neighborhood-based top-N recommendations are typical example of memory-CF. The core part in the memory-based approach is to find similarity through the nearest neighbor algorithm on users or items. cos-similarity or pearson correlation coefficient (PCC) \citep{sarwar2001item} are commonly used for similarity measures. Rating is then aggregated based on similar users/items, lastly items are sorted according to the calculated scores as a ranked list for the target user. 
 
-Memory based Collaborative Filtering uses user rating data to compute the similarity between users or items, then make recommendations. It was an early approach used in many commercial systems. It's effective and easy to implement. Typical examples of this approach are neighborhood-based CF and item-based/user-based top-N recommendations. There are two major problems with Memory based approach.  
+Matrix Factorization and data mining techniques are normally used in model based collaborative filtering. There are many model-based CF algorithms. Bayesian networks, clustering models, just to name a few. The general approach is using machine learning pattern recognition ability to map complex pattern from large sparse data matrix into dense low-dimensional representation. Base on different recommendation objectives, different optimization strategy is applied. i.e. Mean squared deviation is commonly used for explicit rating estimation, while Bayesian personalized ranking (BPR) \citep{rendle2012bpr}, a pair-wise ranking optimization criterion, is widely used for implicit click-through prediction.   
+Meanwhile, Item2Vec \citep{barkan2016item2vec} is a good example of data mining in recommendation applications. Inspired from Word2Vec \citep{mikolov2013distributed} Skip-Gram and Negative Sampling algorism, Item2Vec treats each item as corpus, then shuffles items order during the training process. In the end, items are embedded into a multi-dimensional vector space. So that, similarity between items can be easily measured by calculating the distance without requiring user data input.  
 
-One is, when user and item number grows exponentially, Collaborative Filtering is unable to scale up easily, which limits its ability in making recommendation on large datasets. Some dimensional reduction technique can help, in terms of reducing the matrix size. However, we could also fall into the risks of information loss, which leads to accuracy degradation.  
-
+There are two major problems with CF based approach.  
+One is, when user and item number grows exponentially, Collaborative Filtering is unable to scale up easily, which limits its ability in making recommendation on large datasets. Some dimensional reduction technique can help, in terms of reducing the matrix size. However, we could also fall into the risks of information loss, which leads to accuracy degradation. 
 The other glaring problem for Matrix Factorization algorism is data sparsity. Sparsity problem could happen when user interaction data only covers small percentage of the total item data set. The other common case is Cold Start, which is, when user or item newly enters into the system. Due to the lack of new item or new user interaction histories, this makes Collaborative Filtering unable to make meaningful predictions.  
+Techniques such as Singular Value Decomposition (SVD), Latent Semantic Indexing (LSI) are adopted to alleviate the sparsity problem. Those techniques try to improve the performance by filtering out unusable user-item representations and reducing dimensional space. However, such techniques could only also have side effects, such as information loss. 
 
-Techniques such as Singular Value Decomposition (SVD), Latent Semantic Indexing (LSI) are adopted to alleviate the sparsity problem. Those techniques try to improve the performance by filtering out unusable user-item representations and reducing dimensional space. However, such techniques could only help reducing the sparsity impact to a degree, rather than solving the underlining cause. 
-
-There are some simple yet practical ways of solving new user cold start problems without rely on Machine Learning or Data Ming. For example, Netflix gives user survey on users signing up process. Then the collected data is feed into its Recommender model to archive better user retention rate. (Gomez-Uribe and Hunt 2015) 
-
-
-\bigskip
-\textbf{Model based Collaborative Filtering}
-
-Machine Learning Model or Data Mining techniques are normally used in model based collaborative filtering. There are many model-based CF algorithms. Bayesian networks, latent semantic models clustering models, just to make a few. The general approach is using machine learning pattern recognition ability to map complex pattern from large sparse data matrix into dense low-dimensional representation, thus helps easing the scalability problem.  
-
-Item2Vec \citep{barkan2016item2vec} is inspired by Word2Vec \citep{mikolov2013distributed} Skip-Gram and Negative Sampling algorism It treats each item as corpus, then shuffles items order during the training process. In the end, items are embedded into a multi-dimensional vector space. So that, similarity between items can be easily measured by calculating the distance without requiring user data input.  
-
-Macedo et al. (2015) uses Contextual Learning approach, which exploit the contextual signals from event-based social networks, to solve the short-live and constant cold starting problem for ranking events content. 
-
-The challenge for model based Collaborative Filtering would come down to the complexity of model building, which cloud be costly.  Since it uses other models to make classifications or regressions, that means the recommender system would inevitably inherit the limitation of the model or data mining approach recommender system adopted. For example, dimensional reduction technique used in model based Collaborative Filtering can leads to un-wanted data loss. 
- 
+From implementation and real-world adaptation perspective, there are some simple yet practical ways of solving new user cold start problems without rely on Machine Learning or Data Ming. For example, Netflix gives user survey on users signing up process. Then the collected data is feed into its Recommender model to archive better user retention rate \citep{gomez2015netflix}. however in general CF-based model still faces complexity challenges, when it comes to feature engineering and maintaining model effectiveness over time. 
 
 
 \bigskip
 \subsubsection{Content based recommender systems}
 
-Content-based recommendation methods are dependent on the user’s own histori- cal records and independent of other users, making it different from the CF-based recommendation methods. As the name suggests, content-based recommendation methods aim to recommend items whose contents are similar to those in which a specific user was interested in previously [Shardanand and Maes (1995)]. The content-based recommendation methods derive from information retrieval and focus on items with text information such as documents, news or Web pages. For example, users who liked articles that have discussed “recommender systems” and “database” will prefer articles with the same topics. The basic steps of content-based recommendation methods are: (1) To
-represent items with attributes and features that are important and discriminative; (2) To analyze the description of the items preferred by a particular user to determine the principal common attributes (preferences) that can be used to distinguish these items. These preferences are stored in a user profile; and (3) To compare each item’s attributes with the user profile so that only items that have a
+Content-based recommendation methods are dependent on the individual user’s own historical records regardless of other users interaction. This making it different from the CF-based recommendation methods. 
+As suggested by the name , content-based recommendation methods aim to recommend items based on contents that are matching to users previous interests \citep{shardanand1995social}. The content-based recommendation methods derive from information retrieval and focus on items with text information such as documents, or categorical attributes. For example, users who interested in job posts that requires "python" and "machine learning" is likely prefer to see more job listing that requires similar skills. 
 
-% \bigskip
-% \textbf{Hybrid Collaborative Filtering}
+There are 3 basic steps in content-based recommendation methods are: 
+\begin{itemize}
+    \item define important and discriminative item feature and attributes for item representation
+    \item based on individual users' historical interaction to determine the principal common attributes as users preference profile
+    \item compare users profile with items attributes, and make recommends base on matching scores.
+\end{itemize}
 
-% Content-Based Collaborative filtering, Network-Based Collaborative filtering, and Knowledge-Graph-based Collaborative filtering, can all fall into the Hybrid Collaborative Filtering Category.  
+Though content-based recommender system is more capable of handling cold start substitutions. The challenges of building such recommendation model are most related to the complexity of defining feature importance which leads to inability of adapting to data changes. The feature selection process is also heavily depended on experts domain knowledge. 
 
-% One big advantage of using Hybrid approach is it can significantly improve the cold start problem.  
+\subsection{Knowledge Graph based representation in recommendation applications}
+Known for its semitic properties, knowledge graph captures information and relationship between different types of data entities. Comparing with traditional column-based data structure, It is much more adaptive to constant data updates. 
 
-% Entity2rec (Palumbo 2017) demonstrated that by using knowledge-graph, Property-specific user-item relatedness, and Global user-item relatedness, could significantly improve top-N recommendation performance. 
+Techniques such PathSim \citep{Sun2011PathSim} and HeteSim \citep{Shi2013HeteSim} provided a rich foundation for similarity measurements. Its results can be naturally borrowed into recommender systems. 
+Embedding based approach, such as node2vec \citep{grover2016node2vec} further pushed graph based algorithmic framework for learning continuous feature representations. In node2vec, nodes is mapped to low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. Using a biased random walk procedure to explores diverse neighborhoods, node2vec can learn task-independent representations in complex networks. 
+Entity2rec \citep{palumbo2017entity2rec} demonstrated that by using knowledge-graph, Property-specific user-item relatedness, and Global user-item relatedness, could significantly improve top-N recommendation performance
 
-% By exploiting the network activity, Chen et al. (2010) uses homogeneous attributes of tweets and the heterogeneous nature of its network to solve the ranking problem at Tweeter. Agarwal et al. (2014) from LinkedIn uses the Taxonomy activity of its content to make time sensitive recommendation on its User Feed. 
+Graph Neural Network (GNN) as an extension of deep learning approaches using graph data network structure have recently gaining more and more attention. 
+GraphSAGE \citep{hamilton2017inductive} proposed a inductive approach fo generating node embeddings. Instead of requiring all nodes in the graph to be presented during training of the embeddings, GraphSAGE extend the generalization ability to unseen nodes. 
+\citep{lee2018graph} is a good demonstration of attention-based learning techniques are applied in graph. Such feature learning ability makes a graph based data feature to be more versatile in facing data changes. 
+Techniques, such as, user-guided embedding, can be invaluable for catering to optimise recommendation problem and effectively reduce the data noise problem by exploiting the signals residing in the data.
 
-% However, such approach also means it requires extra external data or special data structure to complement the sparse user interaction data. This adds complexity and cost. And in many cases, those the extra data support could be just unavailable. 
-
-\subsubsection{Knowledge Graph based recommendation}
-Known for its Semitic properties, knowledge graph captures information and relationship between different types of data points. Comparing with traditional column-based data structure, Its adaptability in every changing data context, is much more forgiving for dynamic data models. Nodes and Meta-Path information mining is playing an important role in the data mining research domain. In recommender systems, a lot of time, we are tasked to making recommendations based on similarity. Techniques such PathSim \citep{Sun2011PathSim} and HeteSim \citep{Shi2013HeteSim} provided a rich foundation for similarity measure in HIN. Its results can be naturally borrowed into recommender system in KNN settings and Top-K recommendations. 
-
-In the feature learning space, node2vec (Grover and Leskovec 2016), an algorithmic framework for learning continuous feature representations for nodes in networks. In node2vec, nodes is mapped to low-dimensional space of features that maximizes the likelihood of preserving network neighborhoods of nodes. Using a biased random walk procedure to explores diverse neighborhoods, node2vec can learn task-independent representations in complex networks. GraphSAGE (Hamilton et al. 2018) furthered the graph feature learning to be inductive instead of requiring all nodes in the graph to be presented during training of the embeddings. This extend the graph generalization ability to unseen nodes. From recommender system perspective, allowed less dependency of background knowledge in the recommendation problem domain \citep{Hu2018}.  
-
-Graph Classification using Structural Attention \citep{lee2018graph} is a good demonstration of attention-based learning techniques are applied in graph. Such feature learning ability makes a graph based data feature to be more versatile in facing data change and problem context switching. 
-Techniques, such as, User-guided embedding, can be invaluable for catering to recommender system with ever changing data streams. Such approach can also effectively reduce the data noise problem by exploiting the signals residing in the data.  
-
-Graph Neural Network (GNN) as an extension of deep learning approaches using graph data network structure have recently emerged. \citet{ying2018graph} shows promising signs of GNN being adopted in a large-scale deep recommendation engine. \citet{song2019session} propose a recommender system that model dynamic user behaviors and context-dependent social influence with a graph-attention neural network, which dynamically infers the influencer based on users’ current interests. Both of the research shown that GNN would be a promising approach for handling dynamic and temporal data in recommendation tasks.
+GNN research also intrigued applications in the recommendation domain. \citet{ying2018graph} shows promising signs of GNN being adopted in a large-scale deep recommendation engine. \citet{song2019session} propose a recommender system that model dynamic user behaviors and context-dependent social influence with a graph-attention neural network, which dynamically infers the influencer based on users’ current interests. Both of the research shown that GNN would be a promising approach for making the recommender systems more adaptive and capable of handling cold start problems.
 
 \subsection{Cross-Domains Recommender Systems}
-recommender systems can be built from two or more different but related domains \citep{fernandez2012cross}. Different domains would have different users or items, however there are also overlapping items or users across different domains. 
+Recommender systems can be built from two or more different but related domains \citep{fernandez2012cross}.
 
-\bigskip
-\textbf{Cross-domain Recommendation with Consistent Information Transfer}
-Consistent Information Transfer (CIT) uses domain adaptation technique to ensure the consistency of knowledge extracted between the source and target domain. 
-The procedure consists of five steps: (1) Users/items group clustering from the source and target domains; (2) Domain adaptation for generating consistent latent groups; (3) Consistent knowledge extraction from the latent groups; (4) Target domain group representations adjustment for retaining domain-specific characteristics; (5) A recommender system for the target domain is built. Specific algorithm is used for each step. Such as, Flexible Mixture Model (FMM) is commonly used to cluster the users and items separately \citep{si2003flexible}. Geodesic flow kernel (GFK) is a domain adaptation strategy \citep{gong2014learning}, etc. but substitutions can also be applied.
+User/item clustering and domain adaptation strategy are commonly used approaches for knowledge extraction between the source and target domain. Such as, Consistent Information Transfer (CIT) \citep{zhang2017cross}, where Flexible Mixture Model (FMM) is used to cluster the users and items separately \citep{si2003flexible}. Then Geodesic flow kernel (GFK) is used domain adaptation strategy \citep{gong2014learning}.
 
-\bigskip
-\textbf{Cross-domain Recommendation with Kernel-induced Knowledge Transfer}
-Kernel-induced Knowledge Transfer (KerKT) uses constraints on similarities between the entities in each domain as a bridge for knowledge transfer \citep{zhang2018cross}. It is important to maintain the intra-domain and inter-domain entity similarities, while measuring the similarities between entities in the same domain are easy, inter-domain entity similarities cannot be computed directly.  
+Kernel-induced Knowledge Transfer (KerKT) uses constraints on similarities between the entities in each domain as a bridge for knowledge transfer \citep{zhang2018cross}. It is important to maintain the intra-domain and inter-domain entity similarities, while measuring the similarities between entities in the same domain are easy, inter-domain entity similarities cannot be computed directly.
+KerKT has a strong connection to a bipartite edge completion problem\citep{he2016birank}. We use connected nodes in the graph representations for both the source and target domains. The overlapping entity naturally act as “bridge” to couple the two domains.
 As a result, The overlapping entities are mapped and measured in the same feature space for similarities, subsequently, the non-overlapping entities similarities can be then measured by diffusion kernel completion.
-The kernel-induced completion has a strong connection to a bipartite edge completion problem\citep{he2016birank}. We use connected nodes in the graph representations for both the source and target domains. The overlapping entity naturally act as “bridge” to couple the two domains.
 
-% \bigskip
-% \textbf{Cross-domain Recommendation with Graph Neural Network}
+In recent years, many graph based transfer learning method had emerged. GANs \citep{goodfellow2014generative} base domain adaptation strategy are found in graph convolution methods \citep{dai2019network}. While \citet{xi2020graph} use graph factorization machine for cross-domain recommendations. It first projects nodes from both domains graph into a low dimension dense vector. Then its framework leverage message propagation and shared graph parameters to combine both domain specific and overlapped features for prediction task.
+
+One reason to exploit cross-domain recommender systems is solving data insufficiency problem in single domain. As one domain may borrow relatively rich data insights from the other domain. While the available data in source domain can assist with the recommendation in a target domain with sparse data. 
+
 
