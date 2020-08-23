@@ -10,4 +10,6 @@ __latexindent_temp.tex
 *.aux
 main.toc
 main.pdf
+main.bcf
+main.run.xml
 tbd
