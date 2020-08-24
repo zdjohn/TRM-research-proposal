@@ -10,7 +10,13 @@
 
 \subsection*{Task 1: propose a framework to form a unified knowledge graph to accommodate both user/item profile and interactions}
 
-Here, we propose to form a heterogeneous knowledge graph that accommodate item/user profile information besides interactions records. We explore the semantic information of the graph structure to improve the data density, when interaction alone being too sparse to use. 
+Here, we propose to form a heterogeneous knowledge graph based recommendation framework that accommodate item/user profile information besides interactions records as illustrated in Fig \ref{fig:framework}. We explore the semantic information of the graph structure to improve the data density, and improve model adaptiveness.
+
+\begin{figure*}[!h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figs/framework_overview.jpg}
+    \caption{framework overview}\label{fig:framework}
+\end{figure*}
 
 Firstly, we use side information to crate a knowledge graph. The knowledge graph node can either be item or important feature entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information. In the end, we would have 2 heterogeneous knowledge graph, based on users and items perspectively. Illustrated as G1 and G2 in Fig \ref{fig:ikgraph}.
 
@@ -27,16 +33,15 @@ As a result, such heterogeneous graph structure is open and capable of establish
 
 \subsection*{Task 2: Propose a method to leverage user/item representation with heterogeneous knowledge graph}
 
-
-\begin{figure*}[!t]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figs/meta-embedding.png}
-    \caption{meta-path based interactions via heterogeneous knowledge graph}\label{fig:meta_task2}
-\end{figure*}
-
 Following to task 1, incorporating the rich heterogeneous knowledge graph into recommender system is not straight forward. Most recommender models are only capable of processing structured data. The aim of this task is to transforming node into latent representation through nodes' neighborhood propagation for recommender system to use.
 
 In addition to using direct connections, in this task, we adopts experts knowledge into representation modeling process by defining meta-path connections between nodes. Adopting expert knowledge brings a number of benefits:
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figs/meta-embedding.png}
+    \caption{meta-path based interactions via heterogeneous knowledge graph}\label{fig:meta_task2}
+\end{figure*}
 
 Firstly, We establish indirect user-item relationship from the heterogeneous knowledge graph from task 1. For example, \textit{User - Movie} interaction, can be extend to \textit{User - Movie1 - Actor - Movie2}. As a result, collaborative filtering (CF) based recommendation approach can benefits from the denser interaction datasets. 
 
