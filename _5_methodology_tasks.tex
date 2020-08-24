@@ -8,13 +8,13 @@
 
 \section{Methodology}
 
-\subsection*{Task 1: propose a approach to form a unified knowledge graph to accommodate both user/item profile and interactions}
+\subsection*{Task 1: propose a framework to form a unified knowledge graph to accommodate both user/item profile and interactions}
 
 Here, we propose to form a heterogeneous knowledge graph that accommodate item/user profile information besides interactions records. We explore the semantic information of the graph structure to improve the data density, when interaction alone being too sparse to use. 
 
 Firstly, we use side information to crate a knowledge graph. The knowledge graph node can either be item or important feature entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information. In the end, we would have 2 heterogeneous knowledge graph, based on users and items perspectively. Illustrated as G1 and G2 in Fig \ref{fig:ikgraph}.
 
-\begin{figure*}[!t]
+\begin{figure*}[!h]
     \centering
     \includegraphics[width=0.8\textwidth]{figs/ikdiagram.png}
     \caption{G1:user knowledge graph, G2:item knowledge graph, G3:user-item bipartite graph}\label{fig:ikgraph}
@@ -34,7 +34,7 @@ As a result, such heterogeneous graph structure is open and capable of establish
     \caption{meta-path based interactions via heterogeneous knowledge graph}\label{fig:meta_task2}
 \end{figure*}
 
-Following to Task 1, Incorporating the rich heterogeneous knowledge graph into recommender system is not straight forward. Most recommender models are only capable of processing structured data. The aim of this task is to transforming node into latent representation through nodes' neighborhood propagation for recommender system to use.
+Following to task 1, incorporating the rich heterogeneous knowledge graph into recommender system is not straight forward. Most recommender models are only capable of processing structured data. The aim of this task is to transforming node into latent representation through nodes' neighborhood propagation for recommender system to use.
 
 In addition to using direct connections, in this task, we adopts experts knowledge into representation modeling process by defining meta-path connections between nodes. Adopting expert knowledge brings a number of benefits:
 
@@ -75,7 +75,7 @@ In this task, we aim to optimize node representation inside knowledge graph as w
 Based on the findings from task 1-4, we apply earlier defined propagation rule and aggregator method under following objective function as:
 
 \begin{equation}
-    Target=\min{(L_\text{KGE}+L_\text{FM}+\lambda\|\theta\|^2_2)}
+    Loss=\min{(L_\text{KGE}+L_\text{FM}+\lambda\|\theta\|^2_2)}
 \end{equation}
 
 Where $L_\text{KGE}$ is the optimization target for representation embedding in knowledge graph. Here we will experiment on different loss option for optimizing recommendation problem. For example, the entity relationship can be optimise based on translation principle \citep{lin2017learning}. 
@@ -95,7 +95,7 @@ Lastly, regularization is applied on $\theta$ as model parameters.
 Consequently, the trained model entity representation would tailored toward the recommendation objective.
 
 
-\subsubsection*{Step 2: Design a cross domains recommendation framework via knowledge graph}
+\subsubsection*{Step 2: Design a cross-domain recommendation framework via knowledge graph}
 
 In the second step, we extend recommendation model from single domain in Step 1 to multiple domains for further exploration on domain adaptation ability across multiple knowledge graphs.
 
@@ -107,16 +107,15 @@ Following GANs intuition, we introduce domain classifier D as critic, a binary c
     L_\text{DA}(e_s,e_t)=E_{e \in D_s}[log(1-D(e_s))] + E_{e \in D_t}[log(D(e_t))]
 \end{equation}
 
-Finally we adjust our cross domains recommendation objective to as following:
+Finally we adjust our cross-domain recommendation objective to as following:
 
 \begin{equation}
-    Target=\min{(L_\text{DA}+L_\text{FM}+\lambda\|\theta\|^2_2)}
+    Loss=\min{(L_\text{DA}+L_\text{FM}+\lambda\|\theta\|^2_2)}
 \end{equation}
 
-\subsection*{Task 6:  A case study for validating the proposed recommendation approaches}
+\subsection*{Task 6:Build a prototype for validating the proposed recommendation approaches}
 
 The research will be verified from two aspects: 
-First, verify knowledge graph based recommendation approach using public datasets, such as DBLP DBLP Citation Networks, MovieLens data sets (http://www.grouplens.org/node/73). Similarity measure as well as adaptiveness are the core parts of this research, each aspects will be verified accordingly.
-
-Second, the approach will be used in a real world data sets. Industries problems such as tourism and real estate listings which faces constant cold start problems will be used to further test the effectiveness of the proposed method.
+First, verify knowledge graph based recommendation approach using public datasets, such as DBLP Citation Networks, MovieLens data sets. Similarity measure as well as adaptiveness are the core parts of this research, each aspects will be verified accordingly.
+Second, the recommendation approach will be used in a real world data sets for solving industry problems. Such as, tourism , job posting and real estate listings where suffers from constant cold start problems. Experiments will be used to further test the effectiveness of the proposed method.
 

@@ -2,11 +2,11 @@
 
 \section{Research Question, Objectives, and Expected Outcome}
 
-Recommender Systems (RS) predicts user-item interests by learning historical interaction records. Though RS is well recognized by the industry, at different stages, it still faces a number of challenges. 
-To be more specific, in early launching stage, RS commonly faces data sparsity problem due to the lack of historical interactions. i.e. data sparsity problem. 
-Subsequently, many RSs also face limitation on new emerging data at post deployment stage, which known as cold start. 
+Recommender systems predicts user-item interests by learning historical interaction records. Though, it is well recognized by the industry, at different stages, it still faces a number of challenges. 
+To be more specific, recommender system often faces data sparsity problem in its early launching stage due to the lack of historical interactions. 
+Subsequently, many recommender system also experience the limitation on new emerging data at post training stage, which known as cold start. 
 
-In this research, we explore the transfer learning application on across domains knowledge graphs to reduce the launching barriers for recommender system on early stage. Then, we leverage the rich semantic information of knowledge graph to build a adaptive recommender system for better quality prediction in cold start settings. 
+In this research, we explore the transfer learning application on cross-domain knowledge graphs to reduce the launching barriers for recommender system on early stage. Then, we leverage the rich semantic information of knowledge graph to build a adaptive recommender system for better quality prediction in cold start settings. 
 
 \subsection{Questions}
 
@@ -27,11 +27,11 @@ This research aims to achieve following objectives:
 
 Collaborative Filtering (CF) based recommender systems, commonly, only uses user-item interactions records in training. Such approach ignores important user/item feature, and is unable to learn non-interacted user/item entities. 
 
-In this objective, by leveraging the heterogeneous graph, user-item interactions, as well as users/items attributes, can be naturally projected into a single multiple-hub network \citep{Shi2017} structure. Nodes representation then can be learned holistically by traversing the meta-path of the graph. Such approach allows RS model to incorporate richer information from knowledge graph to reduce data sparsity and overcome the interaction limitation during training process.
+In this objective, by leveraging the heterogeneous graph, user-item interactions, as well as users/items attributes, can be naturally projected into a single multiple-hub network \citep{Shi2017} structure. Nodes representation then can be learned holistically by traversing the meta-path of the graph. Such approach allows recommendation model to incorporate richer information from knowledge graph to reduce data sparsity and overcome the interaction limitation during training process.
 
 
 \bigskip
-\textbf{Objective 2:} To develop a recommendation approach that is capable of making predictions on newly emerged data points. (Aim to answer question 2)
+\textbf{Objective 2:} To develop a recommendation approach for making predictions on newly emerged data points. (Aim to answer question 2)
 
 Commonly, recommender systems use user/item latent feature for prediction, which were trained on static datasets. For new item or user that appeared post training, their latent feature would not be known until being included in the later re-training. It is known as cold start problem.
 
@@ -39,14 +39,14 @@ In this study, we aim to develope a recommender system that is capable of making
 
 
 \bigskip
-\textbf{Objective 3:} To develop a graph neural networks base method to transfer knowledge cross domains. (Aim to answer question 3)
+\textbf{Objective 3:} To develop a graph neural networks base method to transfer cross-domain knowledge. (Aim to answer question 3)
 
 Subsequent to object 1 and 2, the single domain recommender system frequently suffers from data sparsity problems in its early launching phrase. In order to alleviate the issue and assure prediction quality, our research tries to develop a knowledge transfer method, which improves data density by transferring learnings from a similar but denser domain through the knowledge graph. So that, the recommender system can make high quality predictions early on.
 
 \bigskip
 \textbf{Objective 4:} To develop a adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 1,2,3)
 
-By putting research results from Objective 1,2,3 into a holistic framework. It would enable us to develop a generic approach and making recommendation model adapting to data changes. Such system would significantly ease the RS go-live effort, improve prediction quality and reduce the maintenance cost over time. 
+By putting research results from Objective 1,2,3 into a holistic framework. It would enable us to develop a generic approach and making recommendation model adapting to data changes. Such system would significantly ease the "bring to market" effort, improve prediction quality and reduce the maintenance cost over time. 
 
 Following common datasets will be used for method verification: 
 
