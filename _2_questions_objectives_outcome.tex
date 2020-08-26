@@ -6,12 +6,12 @@ Recommender systems predicts user-item interests by learning historical interact
 To be more specific, recommender system often faces data sparsity problem in its early launching stage due to the lack of historical interactions. 
 Subsequently, many recommender system also experience the limitation on new emerging data at post training stage, which known as cold start. 
 
-In this research, we explore the transfer learning application on cross-domain knowledge graphs to reduce the launching barriers for recommender system on early stage. Then, we leverage the rich semantic information of knowledge graph to build a adaptive recommender system for better quality prediction in cold start settings. 
+In this research, we explore the transfer learning application on cross-domain knowledge graphs to reduce the launching barriers for recommender system on early stage. Then, we leverage the rich semantic information of knowledge graph to build an adaptive recommender system for better quality prediction in cold start settings. 
 
 \subsection{Questions}
 
 \subsubsection*{Question 1}
-How to represent users and items in a unified knowledge graph with user-item interactions and meta data for recommender system?
+How to represent users and items in a unified knowledge graph with user-item interactions and metadata for recommender system?
 
 \subsubsection*{Question 2}
 How to develop a recommender system that is adaptive to new data overtime?
@@ -31,7 +31,7 @@ In this objective, by leveraging the heterogeneous graph, user-item interactions
 
 
 \bigskip
-\textbf{Objective 2:} To develop a recommendation approach for making predictions on newly emerged data points. (Aim to answer question 2)
+\textbf{Objective 2:} To develop a inductive recommendation method for newly emerged data points. (Aim to answer question 2)
 
 Commonly, recommender systems use user/item latent feature for prediction, which were trained on static datasets. For new item or user that appeared post training, their latent feature would not be known until being included in the later re-training. It is known as cold start problem.
 
@@ -44,7 +44,7 @@ In this study, we aim to develope a recommender system that is capable of making
 Subsequent to object 1 and 2, the single domain recommender system frequently suffers from data sparsity problems in its early launching phrase. In order to alleviate the issue and assure prediction quality, our research tries to develop a knowledge transfer method, which improves data density by transferring learnings from a similar but denser domain through the knowledge graph. So that, the recommender system can make high quality predictions early on.
 
 \bigskip
-\textbf{Objective 4:} To develop a adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 1,2,3)
+\textbf{Objective 4:} To develop an adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 1,2,3)
 
 By putting research results from Objective 1,2,3 into a holistic framework. It would enable us to develop a generic approach and making recommendation model adapting to data changes. Such system would significantly ease the "bring to market" effort, improve prediction quality and reduce the maintenance cost over time. 
 
@@ -60,8 +60,16 @@ Following common datasets will be used for method verification:
 
 \end{itemize}
 
+a research overview can be depict as Fig. \ref{fig:r_overview} below
+\begin{figure*}[!h]
+    \centering
+    \includegraphics[width=0.99\textwidth]{figs/research_overview.jpg}
+    \caption{overview of research perspective}\label{fig:r_overview}
+\end{figure*}
+
+
 Based on research questions and objectives above, the following outcomes are expected:
-1) A recommender system framework for dealing with cold start and data sparsity problem; 
-2) A knowledge graph based recommendation model and relevant algorithms adaptive for making prediction on unseen data;
+1) A recommender system framework for dealing with cold start and data sparsity problem;
+2) A knowledge graph based adaptive recommendation model and relevant algorithms for making prediction on unseen data;
 3) A recommendation method to give more accurate recommendations by leveraging external domain knowledge;
 4) Several high quality papers and a PhD thesis.

@@ -10,7 +10,7 @@
 
 \subsection*{Task 1: propose a framework to form a unified knowledge graph to accommodate both user/item profile and interactions}
 
-Here, we propose to form a heterogeneous knowledge graph based recommendation framework that accommodate item/user profile information besides interactions records as illustrated in Fig \ref{fig:framework}. We explore the semantic information of the graph structure to improve the data density, and improve model adaptiveness.
+Here, we propose to form a heterogeneous knowledge graph based recommendation framework that accommodate item/user profile information besides interactions records as illustrated in Fig \ref{fig:framework}. We explore the semantic information of the graph structure to improve the data density and model adaptiveness.
 
 \begin{figure*}[!h]
     \centering
@@ -18,7 +18,8 @@ Here, we propose to form a heterogeneous knowledge graph based recommendation fr
     \caption{framework overview}\label{fig:framework}
 \end{figure*}
 
-Firstly, we use side information to crate a knowledge graph. The knowledge graph node can either be item or important feature entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information. In the end, we would have 2 heterogeneous knowledge graph, based on users and items perspectively. Illustrated as G1 and G2 in Fig \ref{fig:ikgraph}.
+Next, based on the proposed framework, we from the user-item heterogeneous knowledge by unifying user profile, item feature, and user-item interactions into single graph.
+Step 1, we use side information to crate user and item knowledge graphs. The node inside graph can either be item or important feature entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information. In the end, we would have 2 heterogeneous knowledge graph, based on users and items perspectively as illustrated as G1 and G2 in Fig \ref{fig:ikgraph}.
 
 \begin{figure*}[!h]
     \centering
@@ -26,9 +27,9 @@ Firstly, we use side information to crate a knowledge graph. The knowledge graph
     \caption{G1:user knowledge graph, G2:item knowledge graph, G3:user-item bipartite graph}\label{fig:ikgraph}
 \end{figure*}
 
-Next we treat user-item interactions as a bipartite graph, as G3 in Fig \ref{fig:ikgraph}. This way user and item nodes in G1 and G2 are now connected with G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
+Consequently, we treat user-item interactions as a bipartite graph (as G3 Fig \ref{fig:ikgraph}). As a result, user and item nodes in G1 and G2 are now connected by G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
 
-As a result, such heterogeneous graph structure is open and capable of establish connections to new incoming data points. This leads to adaptiveness when handling cold start problem, which we will cover in task 3.
+As a result, the new data coming into the network can establish relationship to other exiting nodes via different edge types. The rich semantic heterogeneous graph structure, also allow information to be propagated and aggregated through different pathways, enable entity information can be learnt or generate through different connections.
 
 
 \subsection*{Task 2: Propose a method to leverage user/item representation with heterogeneous knowledge graph}
