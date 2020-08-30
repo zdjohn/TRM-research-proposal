@@ -1,3 +1,4 @@
+
 % Who introduced the method (or is it new)?
 % Is your use of the method standard?
 % Is your use of the method unusual?
@@ -8,18 +9,20 @@
 
 \section{Methodology}
 
-\subsection*{Task 1: propose a framework to form a unified knowledge graph to accommodate both user/item profile and interactions}
+\subsection*{Task 1: Propose a recommendation framework to form a unified knowledge graph to accommodate both user/item profile and interactions}
 
-Here, we propose to form a heterogeneous knowledge graph based recommendation framework that accommodate item/user profile information besides interactions records as illustrated in Fig \ref{fig:framework}. We explore the semantic information of the graph structure to improve the data density and model adaptiveness.
+Here, we propose to form a knowledge graph based recommendation framework that accommodate both item/user metadata information and interactions, as illustrated in Fig \ref{fig:framework}. We explore the semantic information of the graph structure to improve the data density and model adaptiveness.
 
 \begin{figure*}[!h]
     \centering
-    \includegraphics[width=0.8\textwidth]{figs/framework_overview.jpg}
+    \includegraphics[width=0.95\textwidth]{figs/framework_overview.jpg}
     \caption{framework overview}\label{fig:framework}
 \end{figure*}
 
-Next, based on the proposed framework, we from the user-item heterogeneous knowledge by unifying user profile, item feature, and user-item interactions into single graph.
-Step 1, we use side information to crate user and item knowledge graphs. The node inside graph can either be item or important feature entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information. In the end, we would have 2 heterogeneous knowledge graph, based on users and items perspectively as illustrated as G1 and G2 in Fig \ref{fig:ikgraph}.
+Based on the proposed framework, we from the user-item heterogeneous knowledge graph by unifying user profile, item feature, as well as user-item interactions into a single heterogeneous graph.
+
+First, we use side information to crate user and item knowledge graphs. The nodes inside graph can either be item entities or item features as entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information, such as age, gender, etc. In the end, we would have 2 heterogeneous knowledge graphs, based on users and items perspectively as illustrated as G1 and G2 in Fig \ref{fig:ikgraph}.
+Consequently, we treat user-item interactions as a bipartite graph (as G3 Fig \ref{fig:ikgraph}). As a result, user and item nodes in G1 and G2 are now connected by G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
 
 \begin{figure*}[!h]
     \centering
@@ -27,16 +30,12 @@ Step 1, we use side information to crate user and item knowledge graphs. The nod
     \caption{G1:user knowledge graph, G2:item knowledge graph, G3:user-item bipartite graph}\label{fig:ikgraph}
 \end{figure*}
 
-Consequently, we treat user-item interactions as a bipartite graph (as G3 Fig \ref{fig:ikgraph}). As a result, user and item nodes in G1 and G2 are now connected by G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
-
-As a result, the new data coming into the network can establish relationship to other exiting nodes via different edge types. The rich semantic heterogeneous graph structure, also allow information to be propagated and aggregated through different pathways, enable entity information can be learnt or generate through different connections.
+The rich semantic heterogeneous graph structure enables the new data coming to establish relationship via different node and edge types, which also allowing information to be propagated and aggregated through different pathways. As a result, entity information can be learnt or generate, and subsequently, recommendation predictions can be made based on the output. 
 
 
-\subsection*{Task 2: Propose a method to leverage user/item representation with heterogeneous knowledge graph}
+\subsection*{Task 2: build a recommendation method to leverage user/item representation with heterogeneous knowledge graph}
 
-Following to task 1, incorporating the rich heterogeneous knowledge graph into recommender system is not straight forward. Most recommender models are only capable of processing structured data. The aim of this task is to transforming node into latent representation through nodes' neighborhood propagation for recommender system to use.
-
-In addition to using direct connections, in this task, we adopts experts knowledge into representation modeling process by defining meta-path connections between nodes. Adopting expert knowledge brings a number of benefits:
+Following to task 1, incorporating the rich heterogeneous knowledge graph into recommender system is not a straight forward process. Most recommender models are only capable of processing structured data. The aim of this task is to transforming node into latent representation through nodes' neighborhood propagation for recommender system to use.
 
 \begin{figure*}[!t]
     \centering
@@ -44,70 +43,89 @@ In addition to using direct connections, in this task, we adopts experts knowled
     \caption{meta-path based interactions via heterogeneous knowledge graph}\label{fig:meta_task2}
 \end{figure*}
 
-Firstly, We establish indirect user-item relationship from the heterogeneous knowledge graph from task 1. For example, \textit{User - Movie} interaction, can be extend to \textit{User - Movie1 - Actor - Movie2}. As a result, collaborative filtering (CF) based recommendation approach can benefits from the denser interaction datasets. 
+In addition to using direct connections, in this task, we adopts experts knowledge into representation modeling process by defining meta-path connections between nodes. As a result, we now can establish indirect user-item connections based on the heterogeneous knowledge graph. For example, \textit{User - Movie} interaction, can be extend to \textit{User - Movie1 - Actor - Movie2}. Consequently, collaborative filtering based recommendation approach can be benefited from the denser datasets.
 
-Subsequently, high-order connectivity with in heterogeneous knowledge graph is included as part of node representation learning process. So that, side information such as user demographics, item feature representation and node structural information can be learnt and transform into feature vectors for the representative model. 
+Consequently, high-order connectivity with in heterogeneous knowledge graph is included as part of node representation learning process. So that, side information such as user demographics, item feature representation and node structural information can be learnt and transform into feature vectors holistically for the representative model.
+Another added benefit of meta-path approach is reducing bias, which happens commonly in early stage of recommender systems. i.e. When data is not sufficiently available to represent a complete user/item distribution.
 
-Another added benefit of meta-path approach is reducing bias. Since, it happens commonly in early stage of recommender systems. i.e. When there is insufficient data available to represent a complete user/item distribution. 
+Lastly, we propose a recommendation framework that incorporates above representation approach. By leveraging CF information and path-based similarity within the heterogeneous knowledge graph. As illustrated in Fig \ref{fig:meta_task2}, both interacted and non-interacted user/item entities now can participated into recommender model training.
 
-Lastly, we propose a recommendation framework that incorporates above representation approach. By leverage CF information and path-based similarity within the heterogeneous knowledge graph. As illustrated in Fig \ref{fig:meta_task2}, both interacted and non-interacted user/item entities now can participated into recommender model training.
+\subsection*{Task 3: Build a meta-path based representation method that adapts to unseen data points}
 
-\subsection*{Task 3: to build a recommendation method that is adaptive to unseen data points}
+So far, task 1 and task 2 try to alleviate data sparsity problem by forming heterogeneous knowledge graph and establish indirect connections via meta-path. On the other hand, our recommendation model is still limited to a static recommendation. i.e. The model is only capable of making predictions on data presented during training phase.
 
-So far in Task 1 and Task 2 try to alleviate data sparsity problem by forming heterogeneous knowledge and establish indirect connections via meta-path. However, our recommendation model is limited to a static dataset. i.e. The model is only capable of making predictions on data presented during training phase. 
+\begin{figure*}[!h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figs/sagegraph.png}
+    \caption{sage graph embedding}\label{fig:sagegraph}
+\end{figure*}
 
-The graph convolutional network based embedding approach had shown promising results on classification and link prediction problems. Inspired by GraphSAGE \citep{hamilton2017inductive} and graph attention network (GAT) \citep{velivckovic2017graph}, which introduced a general inductive framework to efficiently generate node embeddings for previously unseen data. \citet{hamilton2017inductive} uses function that generates embeddings by sampling and aggregating features from node neighbors.
+In order to solve the challenge, the graph convolution network based embedding approach has shown promising results on classification and link prediction problems. \citet{hamilton2017inductive} uses function that generates embeddings by sampling and aggregating features from node neighbors, as shown in Fig. \ref{fig:sagegraph}. In this task, we extend the neighborhood sampling by taking part different meta-path connections into this task. This results a extended message propagation and aggregation rules to sample neighborhood and layers within the knowledge graph. Intuitively, different node relationships would be taken part in the embedding process.
 
-In this task, we adopt the inductive approach above onto heterogeneous knowledge graph. In order to to extend model prediction capability, we need to work on 2 major parts: message propagation ability and aggregation rules through nodes neighborhood and layers. 
-Following previous tasks, we apply GAT attention mechanism as part of the message propagation method via node neighborhood linkage and pre-defined meta-path connections. One side benefit of such approach is, expert define relationships can now be explained through attention weights, which leads to better model interpretability.
-Next, we define appropriate aggregator approach from the node neighborhood. We measure and compare different pooling rules and attention mechanism for the inductive learning step.
+Subsequently, attention approach can be employed. As illustrated in Fig. \ref{fig:gat}, similar to the graph attention network (GAT) approach \citep{velivckovic2017graph}, we apply multi-headed attention mechanisms, which learns different attention coefficients on its neighborhood nodes. The neighborhood nodes here are nodes either directly or indirectly connected via path and meta-paths. Subsequently, the later learnt attention coefficients weights can be used to explain the importance of different meta-paths, which leads to better model interoperability.
 
-Lastly, we evaluate the inductively generated node representation effectiveness by applying it in recommendation problem settings. 
+\begin{figure*}[!h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figs/gat.png}
+    \caption{graph attention network}\label{fig:gat}
+\end{figure*}
 
-At a high level, this task solves the limitations by incorporating graph structure and node attributes and generate node embeddings that were not present during training for recommendation predictions.
+We expect the end result will introduce a general inductive approach, which can efficiently generate node embeddings for unseen data that is not initially included during training.
+Experiment will be conducted on different propagation and aggregator approach for node neighborhood sampling. We measure and compare different pooling rules and attention mechanism for the inductive learning step.
+
+At a high level, this task solves the limitations by inductively generate node embeddings for new data points were not present during training for recommendation predictions. as a result, in the end the final recommendation model are more adaptive to new data input, and more capable of handling prediction in cold start settings.
 
 
-\subsection*{Task 4: Develop a knowledge transfer method to improve target domain data sparsity by leveraging source knowledge graph }
-
-In tasks 1-3, we are focusing on 2 major challenge: 1. how to included data that lacks of interactions for training. 2. how to make predictions on data that emerged post training phase. In this task, we are going to focus more on transferring learnt knowledge from a different domain via knowledge graph to overcome the data sparsity problems.
-
-First, we use common metadata (such as, item labels, demographics, etc.), to establish connections between source domain and target domain. 
-Next, we propose a novel network transfer learning framework that leverage  adversarial domain adaptation technique and network multi-order interactions to enable knowledge transfer in a unified end-to-end framework. 
-
-\subsection*{Task 5: Develop a multi-domains recommender systems based on heterogeneous knowledge graph}
-
-\subsubsection*{Step 1: Define a unified optimization objective for knowledge graph based recommender system}
-In this task, we aim to optimize node representation inside knowledge graph as well as collaborative user-item interactions recommendation in a jointly fashion.
-Based on the findings from task 1-4, we apply earlier defined propagation rule and aggregator method under following objective function as:
+\subsection*{Task 4: Define a recommendation method that leverage inductive representation}
+In this task, we aim to optimize node representation inside knowledge graph jointly with collaborative user-item interactions for recommendation objectives.
+Based on the findings from task 3, we apply earlier defined propagation rule and aggregator method under following objective function as:
 
 \begin{equation}
     Loss=\min{(L_\text{KGE}+L_\text{FM}+\lambda\|\theta\|^2_2)}
 \end{equation}
 
-Where $L_\text{KGE}$ is the optimization target for representation embedding in knowledge graph. Here we will experiment on different loss option for optimizing recommendation problem. For example, the entity relationship can be optimise based on translation principle \citep{lin2017learning}. 
+Where $L_\text{KGE}$ is the optimization target for representation embedding in knowledge graph. Next, we will experiment on different loss option for optimizing recommendation problem. For example, the entity representation can be optimise based on translation principle \citep{lin2017learning}.
 
 \begin{equation}
     L_\text{KGE}=\sum{(h,r,t^+,t^-)} -ln_{sigmoid}(g(h,r,t^-)-g(h,r,t^+))
 \end{equation}
 
-While $g(h,r,t)$ is the projected probability from entity $h$ to target entity $t$ propagated via relationship $r$. $^+,^-$ stands for positive and negative samples. Accordingly $L_\text{FM}$ is the BPR \citep{rendle2012bpr} loss for optimizing recommendation objectives. 
+While $g(h,r,t)$ is the projected probability from entity $h$ to target entity $t$ propagated via relationship $r$. $^+,^-$ stands for positive and negative samples. Accordingly $L_\text{FM}$ is the BPR \citep{rendle2012bpr} loss for optimizing recommendation objectives.
 \begin{equation}
-    L_\text{FM}=\sum{(u,i^+,i^-) \in G_{u,i}} -ln_{sigmoid}(y(u,i^+)-y(u,i^-))
+    L_\text{FM} = L_\text{BPR}=\sum{(u,i^+,i^-) \in G_{u,i}} -ln_{sigmoid}(y(u,i^+)-y(u,i^-))
 \end{equation}
 Where y(u,i) commonly stands for user-item dot product, Intuitively, the its result can be regarded as similarity score.
 
 Lastly, regularization is applied on $\theta$ as model parameters.
 
-Consequently, the trained model entity representation would tailored toward the recommendation objective.
+Consequently, the trained model entity representation would tailored toward the recommendation objective in a end-to-end fashion.
+
+Experiment and evaluation will be con ducted on multiple data conditions, such as sparse dataset, cold stat, zero interaction settings to compare and measure the effectiveness of proposed methods.
 
 
-\subsubsection*{Step 2: Design a cross-domain recommendation framework via knowledge graph}
+\subsection*{Task 5: Develop a knowledge transfer method to improve target domain data sparsity by leveraging source knowledge graph}
 
-In the second step, we extend recommendation model from single domain in Step 1 to multiple domains for further exploration on domain adaptation ability across multiple knowledge graphs.
+In this task, we are going to focus more on transferring knowledge from a different domain, where similar but more abundant information can be learnt and adapted from source domain to target domain for improving both entity representation and recommendation objectives. The research and experiments inside this task will be conducted on 2 different approaches:
 
-Similarly to single domain, we extend user-item interactions across 2 different domains. Further side information as described in task 4 is serving as extra connections between target and source knowledge graphs.
+\subsubsection*{Matrix-based FM method for cross-domain knowledge transfer}
+Matrix-based FM method projects nodes and its neighborhood as one-hot encoding from both source and target knowledge graph into a single matrix. This way, we can treat the matrix containing domain-shared information, such as overlapped user or items. Following up, factorization machine approach is applied on top of the derived matrix. Hence embedding vector can be learnt as $FM(x) = v_x \in R^k$, where $k$ is the vector dimension. Knowledge graph based embedding, which was discussed in task 2 and 3 will be applied here for learning source and target domain-specific representations as $KGE(x)$.
+Lastly, concatenation is applied, as, intuitively to combine both domain-shared and domain-specific representations into a single vector.
+Additionally, a share $MLP$ function can be applied on both $FM(x)$ and $KGE(x)$ during training phrase. so, the final representation can be denoted as $v_x = [MLP(MF(x));MLP(KEG(x))]$, where $";"$ stand for the concatenation of two node representations.
 
-Following GANs intuition, we introduce domain classifier D as critic, a binary classifier, to predict if positive sample item comes from source or target domain based on its representation. Intuitively, cross graphs node representation and D can be regarded as 2 player minimax game. It is expected node representation become domain-invariant when reaching equilibrium, i.e. knowledge is transfers across domains, that leads the source and target domain to be aligned. The domain alignment loss can be defined as:
+\subsubsection*{GANs-based method for cross-domain knowledge transfer}
+Adversarial domain adaptation technique is another approach we will experiment on transferring knowledge across 2 different domains.
+First, we identify common entities, for example shared users or items or their related metadata (such as, item labels, demographics, etc.), to establish connections between source and target domain, and consequently unifying the target and source domain into a single knowledge graph.
+Again, knowledge graph embedding will be used for node representation on the unified knowledge graph. Next, a 2 players minimax game are designed for alignment between target and source domains. i.e. a critic will be used for distinguish domain origin based on node representation or interaction connections. A more detail example can be seen in task 6.
+
+
+\subsection*{Task 6: Develop a multi-domains recommender systems based on heterogeneous knowledge graph}
+
+For this task, we extend recommendation model from single domain to multiple domains, in order to further explore on domain adaptation ability by leverage 2 or more knowledge graphs.
+
+Similarly to single domain, we establish richer user-item connections across the source and target domains. Further, common cross-domain entities as described in task 5 can now serve as bridges for unifying and transferring information between 2 knowledge graphs.
+For example, when target and source domains shares a common sub-section of users.
+
+Following GANs intuition, we can introduce domain classifier D as critic, a binary classifier, to predict the origin of positive item sample. i.e. is the item belonged to source or target domain based on its representation vector as classifier input. Intuitively, cross graphs node representation and D now can be regarded as 2 players minimax game. It is expected node representation become domain-invariant when reaching equilibrium, i.e. knowledge is transfers across domains, that leads the source and target domain to be aligned. The domain alignment loss can be defined as:
 
 \begin{equation}
     L_\text{DA}(e_s,e_t)=E_{e \in D_s}[log(1-D(e_s))] + E_{e \in D_t}[log(D(e_t))]
@@ -119,9 +137,11 @@ Finally we adjust our cross-domain recommendation objective to as following:
     Loss=\min{(L_\text{DA}+L_\text{FM}+\lambda\|\theta\|^2_2)}
 \end{equation}
 
-\subsection*{Task 6:Build a prototype for validating the proposed recommendation approaches}
 
-The research will be verified from two aspects: 
+
+\subsection*{Task 7:Build a prototype for validating the proposed recommendation approaches}
+
+The research will be verified from two aspects:
 First, verify knowledge graph based recommendation approach using public datasets, such as DBLP Citation Networks, MovieLens data sets. Similarity measure as well as adaptiveness are the core parts of this research, each aspects will be verified accordingly.
 Second, the recommendation approach will be used in a real world data sets for solving industry problems. Such as, tourism , job posting and real estate listings where suffers from constant cold start problems. Experiments will be used to further test the effectiveness of the proposed method.
 
