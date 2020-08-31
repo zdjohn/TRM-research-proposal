@@ -1,15 +1,22 @@
 \section{Future Significance}
 
 \subsection{Practical Significance}
-Recommender system is becoming more and more prominent in people's daily time. Users are overwhelmed by information that is pushed by different entities. Identify users' interest to assists decision making is an important mission for recommender systems. Meanwhile, due to the nature difference among industry and businesses, implementing and productionize a recommender system often face data sparsity and cold start challenges.  
+This research develops an adaptive recommendation framework based on cross-domain knowledge graphs, which improves recommender systems adaptiveness to new emerging information, even under constrained data conditions.
 
-Knowledge graph based recommender system persists information objects within its semantic network structures. Such property allows higher-order connections between nodes can be learned and used into recommender systems' training, which effectively improves data density. Graph structure also enables new information to be added easier and organically comparing to structured data.  
+Data sparsity and quality issue are big barriers in a real-world recommender system production process, which often leads to poor prediction performance. The recommendation model are more prone to have cold start problems, due to the limited data during training. In this research, we illustrated a systematic framework to overcome above challenges. A holistic approach is introduced, that combines knowledge graph, representation learning, and knowledge transfer learning into a end-to-end schema. Consequently, the proposed approach reduces engineering effort and cost of building such a recommender system, allowing wider business adoptions.
 
-Thus, knowledge graph based recommender system can provide a generic yet effective approach, that reduce “bring to live” cost for business implementing recommender systems. 
 
 \subsection{Theoretical Significance}
-Most of the recommender system research treats recommendation problem as a static snapshot. The consequences of such approach means the recommendation model's ability of adapting new data points are low. Data changes are rarely scoped as part of recommender system design, even though that is a key characterize of real-world datasets. 
+This research develops an adaptive recommendation framework that could greatly improves the recommendation performance under sparse data and cold start conditions.
 
-For this study, we are focusing on recommender systems design by leverage knowledge graph structure. We explore the entity representation property inside heterogeneous graph and its knowledge transferring ability under cross-domain settings to improve recommendation quality and model adaptiveness, especially, when initial datasets are sparse.
+Knowledge graph based representation and cross-domain transfer learning technique is combined as a unified framework to enrich and extract user item information for improved data density and richer node representation. 
+
+Inside the heterogenous knowledge graph, user item metadata, as well as user-item interactions are natively preserved (connected) via nodes and edges within the graph structure. Its rich connections enables new incoming nodes to be incorporated into the graph organically. By leveraging message propagation and aggregation rules, even unseen user or item representation can be generated inductively for recommender system use. As a result, the research outcome would makes the recommendation model more adaptive to cold start problems.
+
+% Research leverages graph based message propagation and aggregation ability
+
+% Most of the recommender system research treats recommendation problem as a static snapshot. The consequences of such approach means the recommendation model's ability of adapting new data points are low. Data changes are rarely scoped as part of recommender system design, even though that is a key characterize of real-world datasets. 
+
+% For this study, we are focusing on recommender systems design by leverage knowledge graph structure. We explore the entity representation property inside heterogeneous graph and its knowledge transferring ability under cross-domain settings to improve recommendation quality and model adaptiveness, especially, when initial datasets are sparse.
 
 
