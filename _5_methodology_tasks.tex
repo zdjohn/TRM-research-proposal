@@ -1,60 +1,47 @@
-
-% Who introduced the method (or is it new)?
-% Is your use of the method standard?
-% Is your use of the method unusual?
-% Are your methods mixed?
-
-% Methods may involve: experiments, writing software, integrating software, proofs, case studies, observations/surveys, statistical analysis
-
-
 \section{Methodology}
 
-\subsection*{Task 1: Propose a recommendation framework to form a unified knowledge graph to accommodate both user/item profile and interactions}
+Before going into each tasks, Fig \ref{fig:framework} illustrates a overview of this research framework. Based on the flow diagram, it shows how different research tasks is associated with each other and how they ultimately contributing our final research objectives. More details for each task are represented as follows.
 
-Here, we propose to form a knowledge graph based recommendation framework that accommodate both item/user metadata information and interactions, as illustrated in Fig \ref{fig:framework}. We explore the semantic information of the graph structure to improve the data density and model adaptiveness.
-
-\begin{figure*}[!h]
+\begin{figure*}[!ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{figs/framework_overview.jpg}
+    \includegraphics[width=0.98\textwidth]{figs/framework_overview.jpg}
     \caption{framework overview}\label{fig:framework}
 \end{figure*}
 
-Based on the proposed framework, we from the user-item heterogeneous knowledge graph by unifying user profile, item feature, as well as user-item interactions into a single heterogeneous graph.
+\subsection*{Task 1: Propose a recommendation framework to form a unified knowledge graph to accommodate both user/item profile and interactions}
 
-First, we use side information to crate user and item knowledge graphs. The nodes inside graph can either be item entities or item features as entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information, such as age, gender, etc. In the end, we would have 2 heterogeneous knowledge graphs, based on users and items perspectively as illustrated as G1 and G2 in Fig \ref{fig:ikgraph}.
-Consequently, we treat user-item interactions as a bipartite graph (as G3 Fig \ref{fig:ikgraph}). As a result, user and item nodes in G1 and G2 are now connected by G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
+For the first task, we form the user-item heterogeneous knowledge graph by unifying user profile, item feature, as well as user-item interactions into a single unified heterogeneous graph.
 
-\begin{figure*}[!h]
+First, we use side information to crate user and item knowledge graphs. The nodes inside graph can either be item or item features as entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information, such as age, gender, etc. In the end, we would have 2 heterogeneous knowledge graphs, based on users and items perspectively as illustrated as G1 and G2 in Fig \ref{fig:meta_task}.
+Consequently, we treat user-item interactions as a bipartite graph (as G3 Fig \ref{fig:meta_task}). As a result, user and item nodes in G1 and G2 are now connected by G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
+
+
+\begin{figure*}[!ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{figs/ikdiagram.png}
-    \caption{G1:user knowledge graph, G2:item knowledge graph, G3:user-item bipartite graph}\label{fig:ikgraph}
+    \includegraphics[width=0.98\textwidth]{figs/meta-embedding.jpg}
+    \caption{meta-path based interactions via heterogeneous knowledge graph}\label{fig:meta_task}
 \end{figure*}
 
-The rich semantic heterogeneous graph structure enables the new data coming to establish relationship via different node and edge types, which also allowing information to be propagated and aggregated through different pathways. As a result, entity information can be learnt or generate, and subsequently, recommendation predictions can be made based on the output. 
+The rich semantic heterogeneous graph structure enables the new data coming to establish relationship via different node and edge types, which also allowing information to be propagated and aggregated through different pathways. 
+Intuitively, the node-to-node distance and neighborhood structural comparisons can be both used in measuring user/item similarity for existing or new nodes. In task 3 and 4, we would further explore this property to overcome cold start problems and improve recommendation model adaptiveness
 
 
 \subsection*{Task 2: Build a recommendation method to leverage user/item representation with heterogeneous knowledge graph}
 
 Following to task 1, incorporating the rich heterogeneous knowledge graph into recommender system is not a straight forward process. Most recommender models are only capable of processing structured data. The aim of this task is to transforming node into latent representation through nodes' neighborhood propagation for recommender system to use.
 
-\begin{figure*}[!t]
-    \centering
-    \includegraphics[width=0.95\textwidth]{figs/meta-embedding.png}
-    \caption{meta-path based interactions via heterogeneous knowledge graph}\label{fig:meta_task2}
-\end{figure*}
-
 In addition to using direct connections, in this task, we adopts experts knowledge into representation modeling process by defining meta-path connections between nodes. As a result, we now can establish indirect user-item connections based on the heterogeneous knowledge graph. For example, \textit{User - Movie} interaction, can be extend to \textit{User - Movie1 - Actor - Movie2}. Consequently, collaborative filtering based recommendation approach can be benefited from the denser datasets.
 
 Consequently, high-order connectivity with in heterogeneous knowledge graph is included as part of node representation learning process. So that, side information such as user demographics, item feature representation and node structural information can be learnt and transform into feature vectors holistically for the representative model.
 Another added benefit of meta-path approach is reducing bias, which happens commonly in early stage of recommender systems. i.e. When data is not sufficiently available to represent a complete user/item distribution.
 
-Lastly, we propose a recommendation framework that incorporates above representation approach. By leveraging CF information and path-based similarity within the heterogeneous knowledge graph. As illustrated in Fig \ref{fig:meta_task2}, both interacted and non-interacted user/item entities now can participated into recommender model training.
+Lastly, we propose a recommendation framework that incorporates above representation approach. By leveraging CF information and path-based similarity within the heterogeneous knowledge graph. As illustrated in Fig \ref{fig:meta_task}, both interacted and non-interacted user/item entities now can participated into recommender model training.
 
-\subsection*{Task 3: Build a meta-path based representation method that adapts to unseen data points}
+\subsection*{Task 3: Build a adaptive representation method that is capable of working with unseen user/item data input}
 
-So far, task 1 and task 2 try to alleviate data sparsity problem by forming heterogeneous knowledge graph and establish indirect connections via meta-path. On the other hand, our recommendation model is still limited to a static recommendation. i.e. The model is only capable of making predictions on data presented during training phase.
+So far, task 1 and task 2 try to alleviate data sparsity problem by forming heterogeneous knowledge graph and establish indirect connections via meta-path. However, our recommendation model is still limited to a static recommendation. i.e. The model is only capable of making predictions on data presented during training phase.
 
-\begin{figure*}[!h]
+\begin{figure*}[!ht]
     \centering
     \includegraphics[width=0.95\textwidth]{figs/sagegraph.png}
     \caption{sage graph embedding}\label{fig:sagegraph}
@@ -64,7 +51,7 @@ In order to solve the challenge, the graph convolution network based embedding a
 
 Subsequently, attention approach can be employed. As illustrated in Fig. \ref{fig:gat}, similar to the graph attention network (GAT) approach \citep{velivckovic2017graph}, we apply multi-headed attention mechanisms, which learns different attention coefficients on its neighborhood nodes. The neighborhood nodes here are nodes either directly or indirectly connected via path and meta-paths. Subsequently, the later learnt attention coefficients weights can be used to explain the importance of different meta-paths, which leads to better model interoperability.
 
-\begin{figure*}[!h]
+\begin{figure*}[!ht]
     \centering
     \includegraphics[width=0.6\textwidth]{figs/gat.png}
     \caption{graph attention network}\label{fig:gat}
@@ -118,7 +105,7 @@ First, we identify common entities, for example shared users or items or their r
 Again, knowledge graph embedding will be used for node representation on the unified knowledge graph. Next, a 2 players minimax game are designed for alignment between target and source domains. i.e. a critic will be used for distinguish domain origin based on node representation or interaction connections. A more detail example can be seen in task 6.
 
 
-\subsection*{Task 6: Develop a multi-domains recommender systems based on heterogeneous knowledge graph}
+\subsection*{Task 6: Develop a cross-domains recommender systems based on heterogeneous knowledge graph}
 
 For this task, we extend recommendation model from single domain to multiple domains, in order to further explore on domain adaptation ability by leverage 2 or more knowledge graphs.
 
@@ -139,7 +126,7 @@ Finally we adjust our cross-domain recommendation objective to as following:
 
 
 
-\subsection*{Task 7:Build a prototype for validating the proposed recommendation approaches}
+\subsection*{Task 7: Build a prototype for validating the proposed recommendation approaches}
 
 The research will be verified from two aspects:
 First, verify knowledge graph based recommendation approach using public datasets, such as DBLP Citation Networks, MovieLens data sets. Similarity measure as well as adaptiveness are the core parts of this research, each aspects will be verified accordingly.
