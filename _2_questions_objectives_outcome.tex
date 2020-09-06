@@ -23,7 +23,7 @@ How to use knowledge graphs to transfer cross-domain knowledge for enhanced reco
 This research aims to achieve following objectives: 
 
 \bigskip
-\textbf{Objective 1:} To develop a graph based representation method to overcome sparsity problems.(Aim to answer question 1)
+\textbf{Objective 1:} To develop a graph based representation method to enhance users and items embeddings in a unified heterogeneous knowledge graph for data density improvement.(Aim to answer question 1)
 
 Collaborative Filtering (CF) based recommender systems, commonly, only uses user-item interactions records in training. Such approach ignores important user/item feature, and is unable to learn non-interacted user/item entities. 
 
@@ -31,7 +31,7 @@ In this objective, by leveraging the heterogeneous graph, user-item interactions
 
 
 \bigskip
-\textbf{Objective 2:} To develop a inductive recommendation method for newly emerged data points. (Aim to answer question 2)
+\textbf{Objective 2:} To develop an adaptive strategy for improving recommender systems’ adaptiveness on new and unseen data with knowledge graph embedding (Aim to answer question 2)
 
 Commonly, recommender systems use user/item latent feature for prediction, which were trained on static datasets. For new item or user that appeared post training, their latent feature would not be known until being included in the later re-training. It is known as cold start problem.
 
@@ -39,12 +39,14 @@ In this study, we aim to develope a recommender system that is capable of making
 
 
 \bigskip
-\textbf{Objective 3:} To develop a graph neural networks base method to transfer cross-domain knowledge. (Aim to answer question 3)
+\textbf{Objective 3:} To develop a cross-domain recommendation method that improves target sparse domain prediction results by transferring relative richer source domains knowledge across. (Aim to answer question 3)
+
+cross-domain recommendation method will be developed to transfer knowledge from source domains with relatively dense data to  enhanced recommendation in a sparse target domain
 
 Subsequent to object 1 and 2, the single domain recommender system frequently suffers from data sparsity problems in its early launching phrase. In order to alleviate the issue and assure prediction quality, our research tries to develop a knowledge transfer method, which improves data density by transferring learnings from a similar but denser domain through the knowledge graph. So that, the recommender system can make high quality predictions early on.
 
 \bigskip
-\textbf{Objective 4:} To develop an adaptive recommender system case study for validating the proposed approaches. (Aim to answer question 1,2,3)
+\textbf{Objective 4:} To develop an adaptive cross-domain recommender system prototype with case studies for validating the suggested approaches. (Aim to answer question 1,2,3)
 
 By putting research results from Objective 1,2,3 into a holistic framework. It would enable us to develop a generic approach and making recommendation model adapting to data changes. Such system would significantly ease the "bring to market" effort, improve prediction quality and reduce the maintenance cost over time. 
 
@@ -60,16 +62,17 @@ Following common datasets will be used for method verification:
 
 \end{itemize}
 
-a research overview can be depict as Fig. \ref{fig:r_overview} below
+
+\subsection*{Expected Outcomes}
+
+Based on research questions and objectives above, the following outcomes are expected:
+1) A knowledge graph based representation learning method for dealing with cold start and data sparsity problem;
+2) An adaptive recommendation model and relevant algorithms for making prediction on unseen data with knowledge graph embeddings;
+3) A recommendation method to enhance target domain recommendation model by leveraging denser source domain knowledge with transfer learning;
+4) A unified adaptive cross-domain recommender system with heterogeneous knowledge graph;
+5) Several high quality papers and a PhD thesis. A research overview can be depict as Fig. \ref{fig:r_overview} below: 
 \begin{figure*}[!h]
     \centering
     \includegraphics[width=0.99\textwidth]{figs/research_overview.jpg}
     \caption{overview of research perspective}\label{fig:r_overview}
 \end{figure*}
-
-
-Based on research questions and objectives above, the following outcomes are expected:
-1) A recommender system framework for dealing with cold start and data sparsity problem;
-2) A knowledge graph based adaptive recommendation model and relevant algorithms for making prediction on unseen data;
-3) A recommendation method to give more accurate recommendations by leveraging external domain knowledge;
-4) Several high quality papers and a PhD thesis.
