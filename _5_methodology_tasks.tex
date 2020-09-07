@@ -1,6 +1,6 @@
 \section{Methodology}
 
-Before going into each tasks, Fig \ref{fig:framework} illustrates a overview of this research framework. Based on the flow diagram, it shows how different research tasks is associated with each other and how they ultimately contributing our final research objectives. More details for each task are represented as follows.
+Before going into each tasks, Figure \ref{:framework} illustrates a overview of this research framework. Based on the flow diagram, it shows how different research tasks is associated with each other and how they ultimately contributing our final research objectives. More details for each task are represented as follows.
 
 \begin{figure*}[!ht]
     \centering
@@ -12,8 +12,8 @@ Before going into each tasks, Fig \ref{fig:framework} illustrates a overview of 
 
 For the first task, we form the user-item heterogeneous knowledge graph by unifying user profile, item feature, as well as user-item interactions into a single unified heterogeneous graph.
 
-First, we use side information to crate user and item knowledge graphs. The nodes inside graph can either be item or item features as entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information, such as age, gender, etc. In the end, we would have 2 heterogeneous knowledge graphs, based on users and items perspectively as illustrated as G1 and G2 in Fig \ref{fig:meta_task}.
-Consequently, we treat user-item interactions as a bipartite graph (as G3 Fig \ref{fig:meta_task}). As a result, user and item nodes in G1 and G2 are now connected by G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
+First, we use side information to crate user and item knowledge graphs. The nodes inside graph can either be item or item features as entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information, such as age, gender, etc. In the end, we would have 2 heterogeneous knowledge graphs, based on users and items perspectively as illustrated as G1 and G2 in Figure \ref{fig:meta_task}.
+Consequently, we treat user-item interactions as a bipartite graph (as G3 Figure \ref{fig:meta_task}). As a result, user and item nodes in G1 and G2 are now connected by G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
 
 
 \begin{figure*}[!ht]
@@ -35,7 +35,7 @@ In addition to using direct connections, in this task, we adopts experts knowled
 Consequently, high-order connectivity with in heterogeneous knowledge graph is included as part of node representation learning process. So that, side information such as user demographics, item feature representation and node structural information can be learnt and transform into feature vectors holistically for the representative model.
 Another added benefit of meta-path approach is reducing bias, which happens commonly in early stage of recommender systems. i.e. When data is not sufficiently available to represent a complete user/item distribution.
 
-Lastly, we propose a recommendation framework that incorporates above representation approach. By leveraging CF information and path-based similarity within the heterogeneous knowledge graph. As illustrated in Fig \ref{fig:meta_task}, both interacted and non-interacted user/item entities now can participated into recommender model training.
+Lastly, we propose a recommendation framework that incorporates above representation approach. By leveraging CF information and path-based similarity within the heterogeneous knowledge graph. As illustrated in Figure \ref{fig:meta_task}, both interacted and non-interacted user/item entities now can participated into recommender model training.
 
 \subsection*{Task 3: Build a adaptive representation method that is capable of working with unseen user/item data input}
 
@@ -47,9 +47,9 @@ So far, task 1 and task 2 try to alleviate data sparsity problem by forming hete
     \caption{sage graph embedding}\label{fig:sagegraph}
 \end{figure*}
 
-In order to solve the challenge, the graph convolution network based embedding approach has shown promising results on classification and link prediction problems. \citet{hamilton2017inductive} uses function that generates embeddings by sampling and aggregating features from node neighbors, as shown in Fig. \ref{fig:sagegraph}. In this task, we extend the neighborhood sampling by taking part different meta-path connections into this task. This results a extended message propagation and aggregation rules to sample neighborhood and layers within the knowledge graph. Intuitively, different node relationships would be taken part in the embedding process.
+In order to solve the challenge, the graph convolution network based embedding approach has shown promising results on classification and link prediction problems. \citet{hamilton2017inductive} uses function that generates embeddings by sampling and aggregating features from node neighbors, as shown in Figure \ref{fig:sagegraph}. In this task, we extend the neighborhood sampling by taking part different meta-path connections into this task. This results a extended message propagation and aggregation rules to sample neighborhood and layers within the knowledge graph. Intuitively, different node relationships would be taken part in the embedding process.
 
-Subsequently, attention approach can be employed. As illustrated in Fig. \ref{fig:gat}, similar to the graph attention network (GAT) approach \citep{velivckovic2017graph}, we apply multi-headed attention mechanisms, which learns different attention coefficients on its neighborhood nodes. The neighborhood nodes here are nodes either directly or indirectly connected via path and meta-paths. Subsequently, the later learnt attention coefficients weights can be used to explain the importance of different meta-paths, which leads to better model interoperability.
+Subsequently, attention approach can be employed. As illustrated in Figure \ref{fig:gat}, similar to the graph attention network (GAT) approach \citep{velivckovic2017graph}, we apply multi-headed attention mechanisms, which learns different attention coefficients on its neighborhood nodes. The neighborhood nodes here are nodes either directly or indirectly connected via path and meta-paths. Subsequently, the later learnt attention coefficients weights can be used to explain the importance of different meta-paths, which leads to better model interpretability.
 
 \begin{figure*}[!ht]
     \centering
@@ -102,7 +102,7 @@ Additionally, a share $MLP$ function can be applied on both $FM(x)$ and $KGE(x)$
 \subsubsection*{GANs-based method for cross-domain knowledge transfer}
 Adversarial domain adaptation technique is another approach we will experiment on transferring knowledge across 2 different domains.
 First, we identify common entities, for example shared users or items or their related metadata (such as, item labels, demographics, etc.), to establish connections between source and target domain, and consequently unifying the target and source domain into a single knowledge graph.
-Again, knowledge graph embedding will be used for node representation on the unified knowledge graph. Next, a 2 players minimax game are designed for alignment between target and source domains. i.e. a critic will be used for distinguish domain origin based on node representation or interaction connections. A more detail example can be seen in task 6.
+Again, knowledge graph embedding will be used for node representation on the unified knowledge graph. Next, a 2 players min-max game are designed for alignment between target and source domains. i.e. a critic will be used for distinguish domain origin based on node representation or interaction connections. A more detail example can be seen in task 6.
 
 
 \subsection*{Task 6: Develop a cross-domains recommender systems based on heterogeneous knowledge graph}
@@ -112,7 +112,7 @@ For this task, we extend recommendation model from single domain to multiple dom
 Similarly to single domain, we establish richer user-item connections across the source and target domains. Further, common cross-domain entities as described in task 5 can now serve as bridges for unifying and transferring information between 2 knowledge graphs.
 For example, when target and source domains shares a common sub-section of users.
 
-Following GANs intuition, we can introduce domain classifier D as critic, a binary classifier, to predict the origin of positive item sample. i.e. is the item belonged to source or target domain based on its representation vector as classifier input. Intuitively, cross graphs node representation and D now can be regarded as 2 players minimax game. It is expected node representation become domain-invariant when reaching equilibrium, i.e. knowledge is transfers across domains, that leads the source and target domain to be aligned. The domain alignment loss can be defined as:
+Following GANs intuition, we can introduce domain classifier D as critic, a binary classifier, to predict the origin of positive item sample. i.e. is the item belonged to source or target domain based on its representation vector as classifier input. Intuitively, cross graphs node representation and D now can be regarded as 2 players min-max game. It is expected node representation become domain-invariant when reaching equilibrium, i.e. knowledge is transfers across domains, that leads the source and target domain to be aligned. The domain alignment loss can be defined as:
 
 \begin{equation}
     L_\text{DA}(e_s,e_t)=E_{e \in D_s}[log(1-D(e_s))] + E_{e \in D_t}[log(D(e_t))]
