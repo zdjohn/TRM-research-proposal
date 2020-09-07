@@ -12,7 +12,7 @@ Before going into each tasks, Figure \ref{:framework} illustrates a overview of 
 
 For the first task, we form the user-item heterogeneous knowledge graph by unifying user profile, item feature, as well as user-item interactions into a single unified heterogeneous graph.
 
-First, we use side information to crate user and item knowledge graphs. The nodes inside graph can either be item or item features as entities based on data exploration and analytics. Same process applies to the user side, i.e. profile information, such as age, gender, etc. In the end, we would have 2 heterogeneous knowledge graphs, based on users and items perspectively as illustrated as G1 and G2 in Figure \ref{fig:meta_task}.
+First, we use side information to crate user and item knowledge graphs. The nodes inside graph can either be item or item features as entities based on data exploration and analytic. Same process applies to the user side, i.e. profile information, such as age, gender, etc. In the end, we would have 2 heterogeneous knowledge graphs, based on users and items respectively as illustrated as G1 and G2 in Figure \ref{fig:meta_task}.
 Consequently, we treat user-item interactions as a bipartite graph (as G3 Figure \ref{fig:meta_task}). As a result, user and item nodes in G1 and G2 are now connected by G3 via "interaction" edges. After this step, we get a unified heterogeneous knowledge graph which contains both user/item feature information as well as interactions.
 
 
@@ -23,7 +23,7 @@ Consequently, we treat user-item interactions as a bipartite graph (as G3 Figure
 \end{figure*}
 
 The rich semantic heterogeneous graph structure enables the new data coming to establish relationship via different node and edge types, which also allowing information to be propagated and aggregated through different pathways. 
-Intuitively, the node-to-node distance and neighborhood structural comparisons can be both used in measuring user/item similarity for existing or new nodes. In task 3 and 4, we would further explore this property to overcome cold start problems and improve recommendation model adaptiveness
+Intuitively, the node-to-node distance and neighborhood structural comparisons can be both used in measuring user/item similarity for existing or new nodes. In task 3 and 4, we would further explore this property to overcome cold start problems and improve recommendation model adaptiveness.
 
 
 \subsection*{Task 2: Build a recommendation method to leverage user/item representation with heterogeneous knowledge graph}
@@ -87,7 +87,7 @@ Lastly, regularization is applied on $\theta$ as model parameters.
 
 Consequently, the trained model entity representation would tailored toward the recommendation objective in a end-to-end fashion.
 
-Experiment and evaluation will be con ducted on multiple data conditions, such as sparse dataset, cold stat, zero interaction settings to compare and measure the effectiveness of proposed methods.
+Experiment and evaluation will be conducted on multiple data conditions, such as sparse dataset, cold stat, zero interaction settings to compare and measure the effectiveness of proposed methods.
 
 
 \subsection*{Task 5: Develop a knowledge transfer method to improve target domain data sparsity by leveraging source knowledge graph}
