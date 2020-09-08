@@ -26,19 +26,19 @@ The rich semantic heterogeneous graph structure enables the new data coming to e
 Intuitively, the node-to-node distance and neighborhood structural comparisons can be both used in measuring user/item similarity for existing or new nodes. In task 3, we would further explore this property to overcome cold start problems and improve recommendation model adaptiveness.
 
 
-\subsection{Task 2: Build a heterogeneous knowledge graph based method to effectively include non-interacted items}
+\subsection{Task 2: Build a knowledge graph based method to ease limitations in recommendation model training and inference}
 
-Most of the recommender systems exclude non-interacted data during training, which limits model prediction ability. In this task, in addition to using direct interactions, we adopt experts knowledge into representation modelling process by defining meta-path connections between nodes. As a result, the model can establish indirect user-item connections via the heterogeneous knowledge graph. For example, \textit{User - Movie} interaction, can be extend to \textit{User - Movie1 - Actor - Movie2}. Consequently, the recommendation model can be benefited from the denser connections inside the heterogeneous graph. One added benefit of such meta-path approach is reducing bias, which happens commonly in the early stage of recommender systems. i.e. When data is not sufficiently available to represent a complete user/item distribution.
+Most of the recommender systems exclude non-interacted data from training, which limits model prediction ability. In this task, in addition to using direct interactions, we adopt experts knowledge into representation modelling process by defining meta-path connections between nodes. As a result, the model can establish indirect user-item connections via the heterogeneous knowledge graph. For example, \textit{User - Movie} interaction, can be extend to \textit{User - Movie1 - Actor - Movie2}. Consequently, the recommendation model can be benefited from the denser connections inside the heterogeneous graph. One added benefit of such meta-path approach is reducing bias, which happens commonly in the early stage of recommender systems. i.e. When data is not sufficiently available to represent a complete user/item distribution.
 
 On the other hand, incorporating the heterogeneous knowledge graph into a recommender system is not as straight forward as processing tabular dataset. Subsequently, this task transforms node into latent representation through node neighborhood propagation. Collectively, high-order connectivity and node neighborhood structure can be included as part of the representation learning process. So that, side information such as user demographics, item feature representation and node structural information can be transformed into feature vectors holistically by the representative model.
 
-Lastly, we propose a recommendation framework that incorporates the above representation approach. By leveraging factorization machine and path-based similarity within the heterogeneous knowledge graph, both interacted and non-interacted user/item entities can now participate in recommender model training and used for the recommendation predictions. as illustrated in Fig. \ref{fig:meta_task}.
-
 \begin{figure*}[!ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{figs/hkg.png}
+    \includegraphics[width=0.8\textwidth]{figs/hkg.png}
     \caption{heterogeneous knowledge graph based recommendation model}\label{fig:meta_task}
 \end{figure*}
+
+Lastly, we propose a recommendation framework that incorporates the above representation approach. By leveraging factorization machine and embedding similarity within the heterogeneous knowledge graph, both interacted and non-interacted user/item entities can participate in recommendation model training and used for the predictions. as illustrated in Fig. \ref{fig:meta_task}.
 
 \subsection{Task 3: Build a adaptive recommendation model via knowledge graph embedding}
 
@@ -94,7 +94,7 @@ Consequently, the trained model entity representation would tailored toward the 
 Experiment and evaluation will be conducted on multiple data conditions, such as sparse dataset, cold stat, zero interaction settings to compare and measure the effectiveness of proposed methods.
 
 
-\subsection{Task 4: Develop a cross-domains recommender systems based on heterogeneous knowledge graph}
+\subsection{Task 4: Develop a cross-domains adaptive recommender systems with heterogeneous knowledge graph}
 
 \subsubsection*{Step 1: Develop a knowledge transfer method to improve target domain data sparsity by leveraging source knowledge graph}
 
@@ -134,7 +134,11 @@ Finally we adjust our cross-domain recommendation objective to as following:
 
 \subsection{Task 5: Build a prototype for validating the proposed recommendation approaches}
 
-The research will be verified from two aspects:
-First, verify knowledge graph based recommendation approach using public datasets, such as DBLP Citation Networks, MovieLens data sets. Similarity measure as well as adaptiveness are the core parts of this research, each aspects will be verified accordingly.
-Second, the recommendation approach will be used in a real world data sets for solving industry problems. Such as, tourism , job posting and real estate listings where suffers from constant cold start problems. Experiments will be used to further test the effectiveness of the proposed method.
+The research will be first verify knowledge graph based recommendation approach in single domain using public datasets to test inductive learning and recommendation date adaptiveness.
 
+Secondly, A real-world case studies will be designed based on real estate property recommendation. The property recommender system constantly faces cold start challenge, which is due to the uniqueness sales circle of residential house. 
+In our case study we use dense historical dataset as source domain to help recommendation tasks on current active listings as the target domain.
+Even though we will only have partially overlapped user and items, many common meta-data is shared across domains.
+Thus, connections can be bridged between two knowledge graphs, ultimately facility the proposed transfer learning method.
+
+It is worth noting that same approach can also be applied in job recommendation tasks and others, which faces the similar cold start challenge.
